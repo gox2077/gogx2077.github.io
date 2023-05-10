@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章 PyQt6 对话框 原文改于 2023-01-10英译中于 2023-04-25  对话被定义为两个以上人之间的交谈。在计算机应用程序中，对话框是用来与应用程序“对话”的窗口。对话框用于从用户获取数据、更改应用程序设置等。 PyQt6 QInputDialog 输入对话框QInputDialog 提供一个简单的对话框，用于从用户获取单个值。输入值可以是字符串、数值或列表">
+<meta property="og:type" content="website">
+<meta property="og:title" content="档案库">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-pyqt6/dialogs.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章 PyQt6 对话框 原文改于 2023-01-10英译中于 2023-04-25  对话被定义为两个以上人之间的交谈。在计算机应用程序中，对话框是用来与应用程序“对话”的窗口。对话框用于从用户获取数据、更改应用程序设置等。 PyQt6 QInputDialog 输入对话框QInputDialog 提供一个简单的对话框，用于从用户获取单个值。输入值可以是字符串、数值或列表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/inputdialog.png?ezimgfmt=rs:202x126/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-09T15:52:12.967Z">
+<meta property="article:modified_time" content="2023-05-09T15:52:12.967Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/pyqt6/inputdialog.png?ezimgfmt=rs:202x126/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-pyqt6/dialogs">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-pyqt6/dialogs.html","path":"translation/zt-pyqt6/dialogs.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyQt6-%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">1.</span> <span class="nav-text">PyQt6 对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QInputDialog-%E8%BE%93%E5%85%A5%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">1.1.</span> <span class="nav-text">PyQt6 QInputDialog 输入对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QColorDialog"><span class="nav-number">1.2.</span> <span class="nav-text">PyQt6 QColorDialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QFontDialog-%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">1.3.</span> <span class="nav-text">PyQt6 QFontDialog 颜色选择对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QFileDialog-%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">1.4.</span> <span class="nav-text">PyQt6 QFileDialog 文件选择对话框</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>DIALOGS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni9kaWFsb2dzLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/eventssignals">上一章</a> <a href="/translation/zt-pyqt6/widgets">下一章</a></p>
+<h1 id="PyQt6-对话框"><a href="#PyQt6-对话框" class="headerlink" title="PyQt6 对话框"></a>PyQt6 对话框</h1><blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-04-25</em></p>
+</blockquote>
+<p>对话被定义为两个以上人之间的交谈。在计算机应用程序中，对话框是用来与应用程序“对话”的窗口。对话框用于从用户获取数据、更改应用程序设置等。</p>
+<h2 id="PyQt6-QInputDialog-输入对话框"><a href="#PyQt6-QInputDialog-输入对话框" class="headerlink" title="PyQt6 QInputDialog 输入对话框"></a>PyQt6 QInputDialog 输入对话框</h2><p><code>QInputDialog</code> 提供一个简单的对话框，用于从用户获取单个值。输入值可以是字符串、数值或列表项。</p>
+<figure class="highlight py"><figcaption><span>input_dialog.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we receive data from</span></span><br><span class="line"><span class="string">a QInputDialog dialog.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Aauthor: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QPushButton, QLineEdit,</span><br><span class="line">        QInputDialog, QApplication)</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.btn = QPushButton(<span class="string">&#x27;Dialog&#x27;</span>, self)</span><br><span class="line">        self.btn.move(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">        self.btn.clicked.connect(self.showDialog)</span><br><span class="line"></span><br><span class="line">        self.le = QLineEdit(self)</span><br><span class="line">        self.le.move(<span class="number">130</span>, <span class="number">22</span>)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">450</span>, <span class="number">350</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Input dialog&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showDialog</span>(<span class="params">self</span>):</span><br><span class="line">        text, ok = QInputDialog.getText(self, <span class="string">&#x27;Input Dialog&#x27;</span>, <span class="string">&#x27;Enter your name:&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> ok:</span><br><span class="line">            self.le.setText(<span class="built_in">str</span>(text))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>该示例包含一个按钮和一个单行文本框小部件。按钮用于显示获取文本的输入对话框。输入的文本将显示在单选文本框小部件中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">text, ok = QInputDialog.getText(self, <span class="string">&#x27;Input Dialog&#x27;</span>, <span class="string">&#x27;Enter your name:&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这一行显示了输入对话框。第一个字符串是对话框标题，第二个是对话框内的消息。对话框返回一个文本和一个布尔值。若点击了 OK 按钮，则布尔值为 True。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ok:</span><br><span class="line">    self.le.setText(<span class="built_in">str</span>(text))</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>setText()</code> 方法，将我们从对话框接收的文本设置到单行文本框中。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/inputdialog.png?ezimgfmt=rs:202x126/rscb1/ng:webp/ngcb1" alt="Input dialog" loading="lazy"><br>Figure: Input dialog</p>
+<h2 id="PyQt6-QColorDialog"><a href="#PyQt6-QColorDialog" class="headerlink" title="PyQt6 QColorDialog"></a>PyQt6 QColorDialog</h2><p><code>QColorDialog</code> 提供用于选择颜色值的对话框。</p>
+<blockquote>
+<p>译注：根据平台不同，颜色选择对话框的内容也不同。</p>
+</blockquote>
+<figure class="highlight py"><figcaption><span>color_dialog.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we select a color value</span></span><br><span class="line"><span class="string">from the QColorDialog and change the background</span></span><br><span class="line"><span class="string">color of a QFrame widget.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QPushButton, QFrame,</span><br><span class="line">        QColorDialog, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QColor</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        col = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        self.btn = QPushButton(<span class="string">&#x27;Dialog&#x27;</span>, self)</span><br><span class="line">        self.btn.move(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">        self.btn.clicked.connect(self.showDialog)</span><br><span class="line"></span><br><span class="line">        self.frm = QFrame(self)</span><br><span class="line">        self.frm.setStyleSheet(<span class="string">&quot;QWidget &#123; background-color: %s &#125;&quot;</span></span><br><span class="line">                               % col.name())</span><br><span class="line">        self.frm.setGeometry(<span class="number">130</span>, <span class="number">22</span>, <span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">450</span>, <span class="number">350</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Color dialog&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showDialog</span>(<span class="params">self</span>):</span><br><span class="line">        col = QColorDialog.getColor()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> col.isValid():</span><br><span class="line">            self.frm.setStyleSheet(<span class="string">&quot;QWidget &#123; background-color: %s &#125;&quot;</span></span><br><span class="line">                                   % col.name())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>此应用程序示例显示了一个按钮和一个 <code>QFrame</code>。小部件背景色为黑色。使用 <code>QColorDialog</code> 可以更改它的背景。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">col = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这是 <code>QFrame</code> 的初始背景色。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">col = QColorDialog.getColor()</span><br></pre></td></tr></table></figure>
+
+<p>这行弹出 <code>QColorDialog</code>。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> col.isValid():</span><br><span class="line">    self.frm.setStyleSheet(<span class="string">&quot;QWidget &#123; background-color: %s &#125;&quot;</span></span><br><span class="line">                           % col.name())</span><br></pre></td></tr></table></figure>
+
+<p>检查颜色是否可用。如果点击过取消按钮，则无可用颜色返回。如果颜色可用，则使用样式表修改背景色。</p>
+<h2 id="PyQt6-QFontDialog-颜色选择对话框"><a href="#PyQt6-QFontDialog-颜色选择对话框" class="headerlink" title="PyQt6 QFontDialog 颜色选择对话框"></a>PyQt6 QFontDialog 颜色选择对话框</h2><p><code>QFontDialog</code> 是用于选择字体的小部件。</p>
+<figure class="highlight py"><figcaption><span>font_dialog.py</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we select a font name</span></span><br><span class="line"><span class="string">and change the font of a label.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QVBoxLayout, QPushButton,</span><br><span class="line">        QSizePolicy, QLabel, QFontDialog, QApplication)</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        vbox = QVBoxLayout()</span><br><span class="line"></span><br><span class="line">        btn = QPushButton(<span class="string">&#x27;Dialog&#x27;</span>, self)</span><br><span class="line">        btn.setSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)</span><br><span class="line">        btn.move(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">        vbox.addWidget(btn)</span><br><span class="line"></span><br><span class="line">        btn.clicked.connect(self.showDialog)</span><br><span class="line"></span><br><span class="line">        self.lbl = QLabel(<span class="string">&#x27;Knowledge only matters&#x27;</span>, self)</span><br><span class="line">        self.lbl.move(<span class="number">130</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">        vbox.addWidget(self.lbl)</span><br><span class="line">        self.setLayout(vbox)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">450</span>, <span class="number">350</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Font dialog&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showDialog</span>(<span class="params">self</span>):</span><br><span class="line">        font, ok = QFontDialog.getFont()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ok:</span><br><span class="line">            self.lbl.setFont(font)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例中，我们有一个按钮和一个标签。使用 <code>QFontDialog</code> 可以更改标签的字体。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">font, ok = QFontDialog.getFont()</span><br></pre></td></tr></table></figure>
+
+<p>此处弹出字体对话框。<code>getFont()</code> 方法返回字体名称和 OK 参数。若点击了 OK 则参数值为 True，否则为 False。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> ok:</span><br><span class="line">    self.label.setFont(font)</span><br></pre></td></tr></table></figure>
+
+<p>如果点击 OK，将使用 <code>setFont()</code> 方法修改标签字体。</p>
+<h2 id="PyQt6-QFileDialog-文件选择对话框"><a href="#PyQt6-QFileDialog-文件选择对话框" class="headerlink" title="PyQt6 QFileDialog 文件选择对话框"></a>PyQt6 QFileDialog 文件选择对话框</h2><p><code>QFileDialog</code> 是允许用户选择文件或目录的对话框。文件可以选择用于打开或保存。</p>
+<figure class="highlight py"><figcaption><span>file_dialog.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we select a file with a</span></span><br><span class="line"><span class="string">QFileDialog and display its contents</span></span><br><span class="line"><span class="string">in a QTextEdit.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QMainWindow, QTextEdit,</span><br><span class="line">        QFileDialog, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QIcon, QAction</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.textEdit = QTextEdit()</span><br><span class="line">        self.setCentralWidget(self.textEdit)</span><br><span class="line">        self.statusBar()</span><br><span class="line"></span><br><span class="line">        openFile = QAction(QIcon(<span class="string">&#x27;open.png&#x27;</span>), <span class="string">&#x27;Open&#x27;</span>, self)</span><br><span class="line">        openFile.setShortcut(<span class="string">&#x27;Ctrl+O&#x27;</span>)</span><br><span class="line">        openFile.setStatusTip(<span class="string">&#x27;Open new File&#x27;</span>)</span><br><span class="line">        openFile.triggered.connect(self.showDialog)</span><br><span class="line"></span><br><span class="line">        menubar = self.menuBar()</span><br><span class="line">        fileMenu = menubar.addMenu(<span class="string">&#x27;&amp;File&#x27;</span>)</span><br><span class="line">        fileMenu.addAction(openFile)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">550</span>, <span class="number">450</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;File dialog&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showDialog</span>(<span class="params">self</span>):</span><br><span class="line">        home_dir = <span class="built_in">str</span>(Path.home())</span><br><span class="line">        fname = QFileDialog.getOpenFileName(self, <span class="string">&#x27;Open file&#x27;</span>, home_dir)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fname[<span class="number">0</span>]:</span><br><span class="line">            f = <span class="built_in">open</span>(fname[<span class="number">0</span>], <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> f:</span><br><span class="line">                data = f.read()</span><br><span class="line">                self.textEdit.setText(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本示例显示了菜单栏、居中的单行文本框和状态栏。菜单项显示用于选择文件的 <code>QFileDialog</code>。文件内容将被加载到单行文本框中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br></pre></td></tr></table></figure>
+
+<p>此示例基于 <code>QMainWindow</code> 小部件，因为我们要将单行文本框居中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">home_dir = <span class="built_in">str</span>(Path.home())</span><br><span class="line">fname = QFileDialog.getOpenFileName(self, <span class="string">&#x27;Open file&#x27;</span>, home_dir)</span><br></pre></td></tr></table></figure>
+
+<p>此处我们弹出 <code>QFileDialog</code>。<code>getOpenFileName()</code> 方法参数中第一个字符串是标题。第二个字符串指定对话框工作目录。我们通过 <code>Path</code> 模块确定用户主目录。默认情况下，文件类型过滤器设置为所有文件(<code>*</code>)</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> fname[<span class="number">0</span>]:</span><br><span class="line">    f = <span class="built_in">open</span>(fname[<span class="number">0</span>], <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> f:</span><br><span class="line">        data = f.read()</span><br><span class="line">        self.textEdit.setText(data)</span><br></pre></td></tr></table></figure>
+
+<p>读取选定的文件名，并将文件内容设置到单行文本框小部件。</p>
+<p>在 PyQt6 教程的这一部分中，我们使用了对话框。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni9kaWFsb2dzLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/eventssignals">上一章</a> <a href="/translation/zt-pyqt6/widgets">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>DIALOGS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

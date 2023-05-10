@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们将进行绘图。Tkinter 中的绘图在 Canvas 小部件上完成。Canvas 是用于在 Tkinter 中进行图形处理的高级工具。 它能用于创建图表、自定义小部件或创建游戏。 Tkinter Canavas 画布画布小部件管理 2D 图形对象集：线、圆、图像或其">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tkinter 绘图">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-tkinter/drawing.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们将进行绘图。Tkinter 中的绘图在 Canvas 小部件上完成。Canvas 是用于在 Tkinter 中进行图形处理的高级工具。 它能用于创建图表、自定义小部件或创建游戏。 Tkinter Canavas 画布画布小部件管理 2D 图形对象集：线、圆、图像或其">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/lines.png?ezimgfmt=rs:402x276/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/colours.png?ezimgfmt=rs:402x126/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/shapes.png?ezimgfmt=rs:332x245/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/lyrics.png?ezimgfmt=rs:422x276/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T12:46:05.502Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/tkinter/lines.png?ezimgfmt=rs:402x276/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-tkinter/drawing">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-tkinter/drawing.html","path":"translation/zt-tkinter/drawing.html","title":"Tkinter 绘图"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Tkinter 绘图 | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-Canavas-%E7%94%BB%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">Tkinter Canavas 画布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E7%94%BB%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">Tkinter 画线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E9%A2%9C%E8%89%B2"><span class="nav-number">3.</span> <span class="nav-text">Tkinter 颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E5%87%A0%E4%BD%95%E5%BD%A2%E7%8A%B6"><span class="nav-number">4.</span> <span class="nav-text">Tkinter 几何形状</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E7%BB%98%E5%88%B6%E5%9B%BE%E5%83%8F"><span class="nav-number">5.</span> <span class="nav-text">Tkinter 绘制图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC"><span class="nav-number">6.</span> <span class="nav-text">Tkinter 绘制文本</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Tkinter 绘图
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>DRAWING</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL2RyYXdpbmcv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/dialogs">上一章</a> <a href="/translation/zt-tkinter/snake">下一章</a></p>
+<blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-05-10</em></p>
+</blockquote>
+<p>在 Tkinter 教程的这一部分，我们将进行绘图。Tkinter 中的绘图在 <code>Canvas</code> 小部件上完成。<code>Canvas</code> 是用于在 Tkinter 中进行图形处理的高级工具。</p>
+<p>它能用于创建图表、自定义小部件或创建游戏。</p>
+<h2 id="Tkinter-Canavas-画布"><a href="#Tkinter-Canavas-画布" class="headerlink" title="Tkinter Canavas 画布"></a>Tkinter Canavas 画布</h2><p>画布小部件管理 2D 图形对象集：线、圆、图像或其它小部件。它适合绘图或建立更复杂的小部件。</p>
+<h2 id="Tkinter-画线"><a href="#Tkinter-画线" class="headerlink" title="Tkinter 画线"></a>Tkinter 画线</h2><p>线是简单的几何原语。<code>create_line()</code> 方法可在 <code>Canvas</code> 上创建线项。</p>
+<figure class="highlight py"><figcaption><span>lines.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The example draws lines on the Canvas.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Canvas, Frame, BOTH</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Lines&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        canvas = Canvas(self)</span><br><span class="line">        canvas.create_line(<span class="number">15</span>, <span class="number">25</span>, <span class="number">200</span>, <span class="number">25</span>)</span><br><span class="line">        canvas.create_line(<span class="number">300</span>, <span class="number">35</span>, <span class="number">300</span>, <span class="number">200</span>, dash=(<span class="number">4</span>, <span class="number">2</span>))</span><br><span class="line">        canvas.create_line(<span class="number">55</span>, <span class="number">85</span>, <span class="number">155</span>, <span class="number">85</span>, <span class="number">105</span>, <span class="number">180</span>, <span class="number">55</span>, <span class="number">85</span>)</span><br><span class="line"></span><br><span class="line">        canvas.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x250+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在代码示例中，我们绘制简单线。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_line(<span class="number">15</span>, <span class="number">25</span>, <span class="number">200</span>, <span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+<p><code>create_line()</code> 方法的参数，是线的起始点与结束点的 x 与 y 坐标。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_line(<span class="number">300</span>, <span class="number">35</span>, <span class="number">300</span>, <span class="number">200</span>, dash=(<span class="number">4</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>绘制了垂直线。<code>dash</code> 选项可指定线的虚线样式。我们有一条线，它由交替的 4px 线段和 2px 空间组成。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_line(<span class="number">55</span>, <span class="number">85</span>, <span class="number">155</span>, <span class="number">85</span>, <span class="number">105</span>, <span class="number">180</span>, <span class="number">55</span>, <span class="number">85</span>)</span><br></pre></td></tr></table></figure>
+<p><code>create_line()</code> 方法可接收多个点。此线将绘制成三角形。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/lines.png?ezimgfmt=rs:402x276/rscb1/ng:webp/ngcb1" alt="Lines" loading="lazy"><br>Figure: Lines</p>
+<h2 id="Tkinter-颜色"><a href="#Tkinter-颜色" class="headerlink" title="Tkinter 颜色"></a>Tkinter 颜色</h2><p>颜色是一个对象，它代表红绿蓝（RGB）的颜色强度值组合。</p>
+<figure class="highlight py"><figcaption><span>colours.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program draws three</span></span><br><span class="line"><span class="string">rectangles filled with different</span></span><br><span class="line"><span class="string">colours.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Canvas, Frame, BOTH</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Colours&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        canvas = Canvas(self)</span><br><span class="line">        canvas.create_rectangle(<span class="number">30</span>, <span class="number">10</span>, <span class="number">120</span>, <span class="number">80</span>,</span><br><span class="line">            outline=<span class="string">&quot;#fb0&quot;</span>, fill=<span class="string">&quot;#fb0&quot;</span>)</span><br><span class="line">        canvas.create_rectangle(<span class="number">150</span>, <span class="number">10</span>, <span class="number">240</span>, <span class="number">80</span>,</span><br><span class="line">            outline=<span class="string">&quot;#f50&quot;</span>, fill=<span class="string">&quot;#f50&quot;</span>)</span><br><span class="line">        canvas.create_rectangle(<span class="number">270</span>, <span class="number">10</span>, <span class="number">370</span>, <span class="number">80</span>,</span><br><span class="line">            outline=<span class="string">&quot;#05f&quot;</span>, fill=<span class="string">&quot;#05f&quot;</span>)</span><br><span class="line">        canvas.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x100+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在代码示例中，我们绘制三个矩形，并用不同的色值填充它们。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas = Canvas(self)</span><br></pre></td></tr></table></figure>
+<p>我们创建 <code>Canvas</code> 小部件。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_rectangle(<span class="number">30</span>, <span class="number">10</span>, <span class="number">120</span>, <span class="number">80</span>,</span><br><span class="line">    outline=<span class="string">&quot;#fb0&quot;</span>, fill=<span class="string">&quot;#fb0&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>create_rectangle()</code> 方法在画布上创建一个矩形项。前四个参数是 x 与 y 坐标值，来自这两个边界点：左上和右下。使用 <code>outline</code> 参数，我们可控制矩形轮廓的颜色。同样地，<code>fill</code> 参数提供的颜色用于用于矩形内部。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/colours.png?ezimgfmt=rs:402x126/rscb1/ng:webp/ngcb1" alt="Colours" loading="lazy"><br>Figure: Colours</p>
+<h2 id="Tkinter-几何形状"><a href="#Tkinter-几何形状" class="headerlink" title="Tkinter 几何形状"></a>Tkinter 几何形状</h2><p>我们可以在画布上绘制不同的形状。以下代码示例将显示其中一些。</p>
+<figure class="highlight py"><figcaption><span>shapes.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this script, we draw basic</span></span><br><span class="line"><span class="string">shapes on the canvas.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Canvas, Frame, BOTH</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Shapes&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        canvas = Canvas(self)</span><br><span class="line">        canvas.create_oval(<span class="number">10</span>, <span class="number">10</span>, <span class="number">80</span>, <span class="number">80</span>, outline=<span class="string">&quot;#f11&quot;</span>,</span><br><span class="line">            fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br><span class="line">        canvas.create_oval(<span class="number">110</span>, <span class="number">10</span>, <span class="number">210</span>, <span class="number">80</span>, outline=<span class="string">&quot;#f11&quot;</span>,</span><br><span class="line">            fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br><span class="line">        canvas.create_rectangle(<span class="number">230</span>, <span class="number">10</span>, <span class="number">290</span>, <span class="number">60</span>,</span><br><span class="line">            outline=<span class="string">&quot;#f11&quot;</span>, fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br><span class="line">        canvas.create_arc(<span class="number">30</span>, <span class="number">200</span>, <span class="number">90</span>, <span class="number">100</span>, start=<span class="number">0</span>,</span><br><span class="line">            extent=<span class="number">210</span>, outline=<span class="string">&quot;#f11&quot;</span>, fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        points = [<span class="number">150</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">120</span>, <span class="number">240</span>, <span class="number">180</span>, <span class="number">210</span>,</span><br><span class="line">            <span class="number">200</span>, <span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">200</span>]</span><br><span class="line">        canvas.create_polygon(points, outline=<span class="string">&#x27;#f11&#x27;</span>,</span><br><span class="line">            fill=<span class="string">&#x27;#1f1&#x27;</span>, width=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        canvas.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;330x220+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>我们在窗口中绘制了五个不同的形状：圆、椭圆、矩形、弧和多边形。轮廓用红色绘制，内部用绿色。轮廓宽 2px。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_oval(<span class="number">10</span>, <span class="number">10</span>, <span class="number">80</span>, <span class="number">80</span>, outline=<span class="string">&quot;#f11&quot;</span>,</span><br><span class="line">    fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>此处 <code>create_oval()</code> 方法用于创建圆项。前四个参数是圆的边界框坐标。换句话说，它们是用于画圆的方框的左上与右下两点的 x 与 y 坐标。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_rectangle(<span class="number">230</span>, <span class="number">10</span>, <span class="number">290</span>, <span class="number">60</span>,</span><br><span class="line">    outline=<span class="string">&quot;#f11&quot;</span>, fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>我们创建了一个矩形项。坐标指的来自绘制矩形的边界框。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_arc(<span class="number">30</span>, <span class="number">200</span>, <span class="number">90</span>, <span class="number">100</span>, start=<span class="number">0</span>,</span><br><span class="line">    extent=<span class="number">210</span>, outline=<span class="string">&quot;#f11&quot;</span>, fill=<span class="string">&quot;#1f1&quot;</span>, width=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>这行代码创建一个弧，弧是圆周的一部分。我们提供边界框。<code>start</code> 参数是弧的起始角。<code>extend</code> 参数是角的大小。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">points = [<span class="number">150</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">120</span>, <span class="number">240</span>, <span class="number">180</span>, <span class="number">210</span>,</span><br><span class="line">    <span class="number">200</span>, <span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">200</span>]</span><br><span class="line">canvas.create_polygon(points, outline=<span class="string">&#x27;#f11&#x27;</span>,</span><br><span class="line">    fill=<span class="string">&#x27;#1f1&#x27;</span>, width=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>创建了一个多边形。它是一个拥有多个角的形状。为了在 Tkinter 中创建多边形，我们通过 <code>create_polygon()</code> 方法提供了多边形的坐标列表。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/shapes.png?ezimgfmt=rs:332x245/rscb1/ng:webp/ngcb1" alt="Shapes" loading="lazy"><br>Figure: Shapes</p>
+<h2 id="Tkinter-绘制图像"><a href="#Tkinter-绘制图像" class="headerlink" title="Tkinter 绘制图像"></a>Tkinter 绘制图像</h2><p>在以下示例中，我们在画布上绘制一个图像项。</p>
+<figure class="highlight py"><figcaption><span>draw_image.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this script, we draw an image</span></span><br><span class="line"><span class="string">on the canvas.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Canvas, Frame, BOTH, NW</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;High Tatras&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.img = Image.<span class="built_in">open</span>(<span class="string">&quot;tatras.jpg&quot;</span>)</span><br><span class="line">        self.tatras = ImageTk.PhotoImage(self.img)</span><br><span class="line"></span><br><span class="line">        canvas = Canvas(self, width=self.img.size[<span class="number">0</span>]+<span class="number">20</span>,</span><br><span class="line">           height=self.img.size[<span class="number">1</span>]+<span class="number">20</span>)</span><br><span class="line">        canvas.create_image(<span class="number">10</span>, <span class="number">10</span>, anchor=NW, image=self.tatras)</span><br><span class="line">        canvas.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>此示例在画布上显示一个图像。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br></pre></td></tr></table></figure>
+<p>从 PIL 模块中，我们引入了 <code>Image</code> 和 <code>ImageTk</code> 模块。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.img = Image.<span class="built_in">open</span>(<span class="string">&quot;tatras.jpg&quot;</span>)</span><br><span class="line">self.tatras = ImageTk.PhotoImage(self.img)</span><br></pre></td></tr></table></figure>
+<p>Tkinter 内部不支持 JPG 图像。作为一种解决方法，我们用 <code>Image</code> 和 <code>ImageTk</code> 模块。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas = Canvas(self, width=self.img.size[<span class="number">0</span>]+<span class="number">20</span>,</span><br><span class="line">    height=self.img.size[<span class="number">1</span>]+<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>我们创建 <code>Canvas</code> 小部件。它考虑了图像的大小。它比实际图像宽 20px 高 20px。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_image(<span class="number">10</span>, <span class="number">10</span>, anchor=NW, image=self.tatras)</span><br></pre></td></tr></table></figure>
+<p>我们用 <code>create_image()</code> 方法在画布上创建图像项。为了显示完整图像，它被锚定在西北角。<code>image</code> 参数提供要显示的照片图像。</p>
+<h2 id="Tkinter-绘制文本"><a href="#Tkinter-绘制文本" class="headerlink" title="Tkinter 绘制文本"></a>Tkinter 绘制文本</h2><p>在最后的示例中，我们在窗口上绘制文本。</p>
+<figure class="highlight py"><figcaption><span>draw_text.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this script, we draw text</span></span><br><span class="line"><span class="string">on the window.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Canvas, Frame, BOTH, W</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Lyrics&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        canvas = Canvas(self)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">30</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;Most relationships seem so transitory&quot;</span>)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">60</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;They&#x27;re good but not the permanent one&quot;</span>)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">130</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;Who doesn&#x27;t long for someone to hold&quot;</span>)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">160</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;Who knows how to love without being told&quot;</span>)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">190</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;Somebody tell me why I&#x27;m on my own&quot;</span>)</span><br><span class="line">        canvas.create_text(<span class="number">20</span>, <span class="number">220</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">            text=<span class="string">&quot;If there&#x27;s a soulmate for everyone&quot;</span>)</span><br><span class="line">        canvas.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;420x250+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>我们在窗口上绘制了一首哥的歌词。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">canvas.create_text(<span class="number">20</span>, <span class="number">30</span>, anchor=W, font=<span class="string">&quot;Purisa&quot;</span>,</span><br><span class="line">    text=<span class="string">&quot;Most relationships seem so transitory&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>前两个参数是文本中心点的 x 与 y 坐标。如果我们将文本项锚定在西边，文本将从此位置开始。<code>font</code> 参数提供文本字体，<code>text</code> 参数是要显示的文本。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/lyrics.png?ezimgfmt=rs:422x276/rscb1/ng:webp/ngcb1" alt="Drawing text" loading="lazy"><br>Figure: Drawing text</p>
+<p>在 Tkinter 教程的这一部分，我们进行了一些绘图。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL2RyYXdpbmcv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/dialogs">上一章</a> <a href="/translation/zt-tkinter/snake">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>DRAWING</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

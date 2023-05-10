@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章 PyQt6 绘图 原文改于 2023-01-10英译中于 2023-04-28  PyQt6 绘图系统可以渲染矢量图形、图像和轮廓基于字体的文本。当我们想更改或增强现有小部件时，或如果我们从零开始创建自定义小部件，就需要在应用程序进行绘制。要进行绘制，我们应使用 PyQt6 工具包提供的绘图 API。 QPainterQPainter 在小部件或其它设备上执行低级别绘制">
+<meta property="og:type" content="website">
+<meta property="og:title" content="档案库">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-pyqt6/painting.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章 PyQt6 绘图 原文改于 2023-01-10英译中于 2023-04-28  PyQt6 绘图系统可以渲染矢量图形、图像和轮廓基于字体的文本。当我们想更改或增强现有小部件时，或如果我们从零开始创建自定义小部件，就需要在应用程序进行绘制。要进行绘制，我们应使用 PyQt6 工具包提供的绘图 API。 QPainterQPainter 在小部件或其它设备上执行低级别绘制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/drawingtext.png?ezimgfmt=rs:282x195/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/points.png?ezimgfmt=rs:302x215/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/colours.png?ezimgfmt=rs:352x125/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/penstyles.png?ezimgfmt=rs:282x295/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/brushes.png?ezimgfmt=rs:357x305/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/beziercurve.png?ezimgfmt=rs:382x275/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-09T15:52:12.935Z">
+<meta property="article:modified_time" content="2023-05-09T15:52:12.935Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/pyqt6/drawingtext.png?ezimgfmt=rs:282x195/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-pyqt6/painting">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-pyqt6/painting.html","path":"translation/zt-pyqt6/painting.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyQt6-%E7%BB%98%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">PyQt6 绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#QPainter"><span class="nav-number">1.1.</span> <span class="nav-text">QPainter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#paintEvent-%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">paintEvent 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">PyQt6 绘制文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-%E7%BB%98%E5%88%B6%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text">PyQt6 绘制点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-%E9%A2%9C%E8%89%B2"><span class="nav-number">1.5.</span> <span class="nav-text">PyQt6 颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QPen-%E7%94%BB%E7%AC%94"><span class="nav-number">1.6.</span> <span class="nav-text">PyQt6 QPen 画笔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QBrush-%E7%AC%94%E5%88%B7"><span class="nav-number">1.7.</span> <span class="nav-text">PyQt6 QBrush 笔刷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF"><span class="nav-number">1.8.</span> <span class="nav-text">贝塞尔曲线</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>PAINTING</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni9wYWludGluZy8=">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/dragdrop">上一章</a> <a href="/translation/zt-pyqt6/customwidgets">下一章</a></p>
+<h1 id="PyQt6-绘图"><a href="#PyQt6-绘图" class="headerlink" title="PyQt6 绘图"></a>PyQt6 绘图</h1><blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-04-28</em></p>
+</blockquote>
+<p>PyQt6 绘图系统可以渲染矢量图形、图像和轮廓基于字体的文本。当我们想更改或增强现有小部件时，或如果我们从零开始创建自定义小部件，就需要在应用程序进行绘制。要进行绘制，我们应使用 PyQt6 工具包提供的绘图 API。</p>
+<h2 id="QPainter"><a href="#QPainter" class="headerlink" title="QPainter"></a>QPainter</h2><p><code>QPainter</code> 在小部件或其它设备上执行低级别绘制。它可以画出从简单线条到复制形状的一切内容。</p>
+<h2 id="paintEvent-方法"><a href="#paintEvent-方法" class="headerlink" title="paintEvent 方法"></a>paintEvent 方法</h2><p>绘制在 <code>paintEvent()</code> 方法中完成。绘制代码位于 <code>QPainter</code> 对象的 <code>begin()</code> 和 <code>end()</code> 方法之间。它在小部件或其它设备上执行低级别绘制。</p>
+<h2 id="PyQt6-绘制文本"><a href="#PyQt6-绘制文本" class="headerlink" title="PyQt6 绘制文本"></a>PyQt6 绘制文本</h2><p>我们首先在窗口的用户区绘制一些 Unicode 文本。</p>
+<figure class="highlight py"><figcaption><span>draw_text.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we draw text in Russian Cylliric.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QColor, QFont</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.text = <span class="string">&quot;Лев Николаевич Толстой\nАнна Каренина&quot;</span></span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">300</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Drawing text&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        self.drawText(event, qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawText</span>(<span class="params">self, event, qp</span>):</span><br><span class="line">        qp.setPen(QColor(<span class="number">168</span>, <span class="number">34</span>, <span class="number">3</span>))</span><br><span class="line">        qp.setFont(QFont(<span class="string">&#x27;Decorative&#x27;</span>, <span class="number">10</span>))</span><br><span class="line">        qp.drawText(event.rect(), Qt.Alignment.AlignCenter, self.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例中，我们用西里尔文绘制了一些文本。这些文本水平和垂直均对齐。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>在绘制事件中完成绘画。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp = QPainter()</span><br><span class="line">qp.begin(self)</span><br><span class="line">self.drawText(event, qp)</span><br><span class="line">qp.end()</span><br></pre></td></tr></table></figure>
+
+<p><code>QPainter</code> 类负责所有低级别绘制。所有绘制方法都位于 <code>begin()</code> 和 <code>end()</code> 方法之间。实际的绘制被委托给 <code>drawText()</code> 方法。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.setPen(QColor(<span class="number">168</span>, <span class="number">34</span>, <span class="number">3</span>))</span><br><span class="line">qp.setFont(QFont(<span class="string">&#x27;Decorative&#x27;</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+
+<p>此处我们定义用于绘制文本的笔和字体。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.drawText(event.rect(), Qt.Alignment.AlignCenter, self.text)</span><br></pre></td></tr></table></figure>
+
+<p><code>drawText()</code> 方法在窗口上绘制文本。绘制事件的 <code>rect()</code> 方法返回需要更新的矩形。我们使用 <code>Qt.Alignment.AlignCenter</code> 在两个维度上对齐文本。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/drawingtext.png?ezimgfmt=rs:282x195/rscb1/ng:webp/ngcb1" alt="Drawing text" loading="lazy"><br>Figure: Drawing text</p>
+<h2 id="PyQt6-绘制点"><a href="#PyQt6-绘制点" class="headerlink" title="PyQt6 绘制点"></a>PyQt6 绘制点</h2><p>点是能被画出的最简单的图形对象。它是窗口上的一个小斑点。</p>
+<figure class="highlight py"><figcaption><span>draw_points.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In the example, we draw randomly 1000 red points</span></span><br><span class="line"><span class="string">on the window.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">import</span> sys, random</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.setMinimumSize(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">300</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Points&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        self.drawPoints(qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawPoints</span>(<span class="params">self, qp</span>):</span><br><span class="line">        qp.setPen(Qt.GlobalColor.red)</span><br><span class="line">        size = self.size()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>):</span><br><span class="line">            x = random.randint(<span class="number">1</span>, size.width() - <span class="number">1</span>)</span><br><span class="line">            y = random.randint(<span class="number">1</span>, size.height() - <span class="number">1</span>)</span><br><span class="line">            qp.drawPoint(x, y)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在本例中，我们在窗口的用户区随机绘制 1000 个红点。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.setPen(Qt.GlobalColor.red)</span><br></pre></td></tr></table></figure>
+
+<p>我们设置笔的颜色为红色。我们使用预定义的 <code>Qt.GlobalColor.red</code> 颜色常量。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">size = self.size()</span><br></pre></td></tr></table></figure>
+
+<p>每次我们重设窗口尺寸时，都会产生绘制事件。我们用 <code>size()</code> 方法获得当前窗口尺寸。我们基于窗口尺寸将点分布到整个窗口用户区。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.drawPoint(x, y)</span><br></pre></td></tr></table></figure>
+
+<p>我们用 <code>drawPoint()</code> 方法绘制点。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/points.png?ezimgfmt=rs:302x215/rscb1/ng:webp/ngcb1" alt="Points" loading="lazy"><br>Figure: Points</p>
+<h2 id="PyQt6-颜色"><a href="#PyQt6-颜色" class="headerlink" title="PyQt6 颜色"></a>PyQt6 颜色</h2><p>颜色是一个代表红、绿、蓝（RGB）强度值组合的对象。有效的 RGB 值在 0 到 255 范围内。我们可以用多种方式定义颜色。最常见的是定义 RGB 的十进制值或十六进制值。我们还可以使用 RGBA 值，它代表红、绿、蓝和 Alpha 通道。此处我们添加些关于透明度的额外信息。Alphat 值是 255 时表示完全不透明，0 时表示完全透明。例如，该颜色是不可见的。</p>
+<figure class="highlight py"><figcaption><span>colours.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example draws three rectangles in three</span></span><br><span class="line"><span class="string">different colours.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QColor</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">100</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Colours&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        self.drawRectangles(qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawRectangles</span>(<span class="params">self, qp</span>):</span><br><span class="line">        col = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        col.setNamedColor(<span class="string">&#x27;#d4d4d4&#x27;</span>)</span><br><span class="line">        qp.setPen(col)</span><br><span class="line"></span><br><span class="line">        qp.setBrush(QColor(<span class="number">200</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        qp.drawRect(<span class="number">10</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        qp.setBrush(QColor(<span class="number">255</span>, <span class="number">80</span>, <span class="number">0</span>, <span class="number">160</span>))</span><br><span class="line">        qp.drawRect(<span class="number">130</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        qp.setBrush(QColor(<span class="number">25</span>, <span class="number">0</span>, <span class="number">90</span>, <span class="number">200</span>))</span><br><span class="line">        qp.drawRect(<span class="number">250</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例中，我们绘制三个彩色矩形。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">color = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">color.setNamedColor(<span class="string">&#x27;#d4d4d4&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此处我们使用十六进制表示法定义颜色。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.setBrush(QColor(<span class="number">200</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">qp.drawRect(<span class="number">10</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此处我们定义一个笔刷并绘制矩形。笔刷是一个基本的图形对象，用于绘制形状的背景。<code>drawRect()</code> 方法接收四个参数，前两个是轴上的 x 与 y 值。第三和第四个参数是矩形的宽和高。此方法使用当前笔和笔刷绘制矩形。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/colours.png?ezimgfmt=rs:352x125/rscb1/ng:webp/ngcb1" alt="Colours" loading="lazy"><br>Figure: Colours</p>
+<h2 id="PyQt6-QPen-画笔"><a href="#PyQt6-QPen-画笔" class="headerlink" title="PyQt6 QPen 画笔"></a>PyQt6 QPen 画笔</h2><p><code>QPen</code> 是一个基础图形对象。它用于绘制直线、曲线，以及矩形、椭圆、多边形或其它形状的轮廓。</p>
+<figure class="highlight py"><figcaption><span>pens.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example we draw 6 lines using</span></span><br><span class="line"><span class="string">different pen styles.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QPen</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">280</span>, <span class="number">270</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Pen styles&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        self.drawLines(qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawLines</span>(<span class="params">self, qp</span>):</span><br><span class="line">        pen = QPen(Qt.GlobalColor.black, <span class="number">2</span>, Qt.PenStyle.SolidLine)</span><br><span class="line"></span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">40</span>, <span class="number">250</span>, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line">        pen.setStyle(Qt.PenStyle.DashLine)</span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">80</span>, <span class="number">250</span>, <span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">        pen.setStyle(Qt.PenStyle.DashDotLine)</span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">120</span>, <span class="number">250</span>, <span class="number">120</span>)</span><br><span class="line"></span><br><span class="line">        pen.setStyle(Qt.PenStyle.DotLine)</span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">160</span>, <span class="number">250</span>, <span class="number">160</span>)</span><br><span class="line"></span><br><span class="line">        pen.setStyle(Qt.PenStyle.DashDotDotLine)</span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">200</span>, <span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">        pen.setStyle(Qt.PenStyle.CustomDashLine)</span><br><span class="line">        pen.setDashPattern([<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>])</span><br><span class="line">        qp.setPen(pen)</span><br><span class="line">        qp.drawLine(<span class="number">20</span>, <span class="number">240</span>, <span class="number">250</span>, <span class="number">240</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例中，我们绘制六条直线。这些线使用六种不同样式的笔绘制。有五种预设的笔样式。我们还可以创建自定义笔样式。最后一条线使用自定义笔样式绘制。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pen = QPen(Qt.GlobalColor.black, <span class="number">2</span>, Qt.PenStyle.SolidLine)</span><br></pre></td></tr></table></figure>
+
+<p>我们创建一个 <code>QPen</code> 对象。颜色为黑色。宽度设置为 2px 以便我们观察笔样式之间的差异。<code>Qt.SolidLine</code> 是一种预设的笔样式。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pen.setStyle(Qt.PenStyle.CustomDashLine)</span><br><span class="line">pen.setDashPattern([<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">4</span>])</span><br><span class="line">qp.setPen(pen)</span><br></pre></td></tr></table></figure>
+
+<p>此处我们自定义笔样式。我们使用 <code>Qt.PenStyleCustomDashLine</code> 笔样式，并调用 <code>setDashPattern()</code> 方法。列表中的数字定义了一种样式。必须有偶数个数字。奇数位定义短横，偶数位定义空间。数字越大，短横或空间就越大。我们的图案是 1px 的短横，接 4px 的空间，再接 5px 的短横，再接 4px 的空间。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/penstyles.png?ezimgfmt=rs:282x295/rscb1/ng:webp/ngcb1" alt="Pen styles" loading="lazy"><br>Figure: Pen styles</p>
+<h2 id="PyQt6-QBrush-笔刷"><a href="#PyQt6-QBrush-笔刷" class="headerlink" title="PyQt6 QBrush 笔刷"></a>PyQt6 QBrush 笔刷</h2><p><code>QPrush</code> 是一种基础图形对象。它用于绘制图形形状（如矩形、椭圆或多边形）的背景。笔刷可以有三种类型：预定义笔刷、渐变或纹理。</p>
+<figure class="highlight py"><figcaption><span>brushes.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example draws nine rectangles in different</span></span><br><span class="line"><span class="string">brush styles.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QBrush</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">355</span>, <span class="number">280</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Brushes&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        self.drawBrushes(qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawBrushes</span>(<span class="params">self, qp</span>):</span><br><span class="line">        brush = QBrush(Qt.BrushStyle.SolidPattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">10</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.Dense1Pattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">130</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.Dense2Pattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">250</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.DiagCrossPattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">10</span>, <span class="number">105</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.Dense5Pattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">130</span>, <span class="number">105</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.Dense6Pattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">250</span>, <span class="number">105</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.HorPattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">10</span>, <span class="number">195</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.VerPattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">130</span>, <span class="number">195</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        brush.setStyle(Qt.BrushStyle.BDiagPattern)</span><br><span class="line">        qp.setBrush(brush)</span><br><span class="line">        qp.drawRect(<span class="number">250</span>, <span class="number">195</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例中，我们绘制了 9 种不同的矩形。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">brush = QBrush(Qt.BrushStyle.SolidPattern)</span><br><span class="line">qp.setBrush(brush)</span><br><span class="line">qp.drawRect(<span class="number">10</span>, <span class="number">15</span>, <span class="number">90</span>, <span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我们定义了一个笔刷对象。我们设置它为绘制器对象，并通过调用 <code>drawRect()</code> 方法绘制矩形。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/brushes.png?ezimgfmt=rs:357x305/rscb1/ng:webp/ngcb1" alt="Brushes" loading="lazy"><br>Figure: Brushes</p>
+<h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><p>贝塞尔曲线是三次线。PyQt6 中的贝塞尔曲线可以由 <code>QPainterPath()</code> 创建。绘制器路径是由一些图形构件组成的对象，如矩形、椭圆、直线和曲线。</p>
+<figure class="highlight py"><figcaption><span>bezier_curve.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program draws a Bézier curve with</span></span><br><span class="line"><span class="string">QPainterPath.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QPainterPath</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">380</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Bézier curve&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        qp = QPainter()</span><br><span class="line">        qp.begin(self)</span><br><span class="line">        qp.setRenderHint(QPainter.RenderHints.Antialiasing)</span><br><span class="line">        self.drawBezierCurve(qp)</span><br><span class="line">        qp.end()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawBezierCurve</span>(<span class="params">self, qp</span>):</span><br><span class="line">        path = QPainterPath()</span><br><span class="line">        path.moveTo(<span class="number">30</span>, <span class="number">30</span>)</span><br><span class="line">        path.cubicTo(<span class="number">30</span>, <span class="number">30</span>, <span class="number">200</span>, <span class="number">350</span>, <span class="number">350</span>, <span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">        qp.drawPath(path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>此例绘制了一条贝塞尔曲线。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">path = QPainterPath()</span><br><span class="line">path.moveTo(<span class="number">30</span>, <span class="number">30</span>)</span><br><span class="line">path.cubicTo(<span class="number">30</span>, <span class="number">30</span>, <span class="number">200</span>, <span class="number">350</span>, <span class="number">350</span>, <span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<p>我们根据 <code>QPainterPath</code> 路径创建贝一条贝塞尔曲线。曲线用 <code>cubicTo()</code> 方法创建，它需要三个点：起点、控制点、终点。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">qp.drawPath(path)</span><br></pre></td></tr></table></figure>
+
+<p>最终通过 <code>drawPath()</code> 方法绘制路径。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/beziercurve.png?ezimgfmt=rs:382x275/rscb1/ng:webp/ngcb1" alt="Bézier curve" loading="lazy"><br>Figure: Bézier curve</p>
+<p>在 PyQt6 教程的这一部分，我们进行了一些基本的绘制。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni9wYWludGluZy8=">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/dragdrop">上一章</a> <a href="/translation/zt-pyqt6/customwidgets">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>PAINTING</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 PyQt6 俄罗斯方块 原文改于 2023-01-10英译中于 2023-04-29  在本章中，我们创建一个俄罗斯方块游戏副本。 俄罗斯方块俄罗斯方块是有史以来最流行的电脑游戏之一。原始游戏由俄罗斯程序员 Alexy Pajitonv 于 1985 年设计并编写。自那时起，俄罗斯方块便开始以各种形式出现在几乎所有平台上。 俄罗斯方块被称为下落方块益智游戏。在游戏中，我们有 7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="档案库">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-pyqt6/tetris.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 PyQt6 俄罗斯方块 原文改于 2023-01-10英译中于 2023-04-29  在本章中，我们创建一个俄罗斯方块游戏副本。 俄罗斯方块俄罗斯方块是有史以来最流行的电脑游戏之一。原始游戏由俄罗斯程序员 Alexy Pajitonv 于 1985 年设计并编写。自那时起，俄罗斯方块便开始以各种形式出现在几乎所有平台上。 俄罗斯方块被称为下落方块益智游戏。在游戏中，我们有 7">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/tetrominoes.png?ezimgfmt=rs:328x132/rscb1/ngcb1/notWebP">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/coordinates.png?ezimgfmt=rs:272x230/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/tetris.png?ezimgfmt=rs:182x406/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-09T15:52:12.935Z">
+<meta property="article:modified_time" content="2023-05-09T15:52:12.935Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/pyqt6/tetrominoes.png?ezimgfmt=rs:328x132/rscb1/ngcb1/notWebP">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-pyqt6/tetris">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-pyqt6/tetris.html","path":"translation/zt-pyqt6/tetris.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyQt6-%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">PyQt6 俄罗斯方块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">俄罗斯方块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">1.2.</span> <span class="nav-text">开发</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>TETRIS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni90ZXRyaXMv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/customwidgets">上一章</a></p>
+<h1 id="PyQt6-俄罗斯方块"><a href="#PyQt6-俄罗斯方块" class="headerlink" title="PyQt6 俄罗斯方块"></a>PyQt6 俄罗斯方块</h1><blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-04-29</em></p>
+</blockquote>
+<p>在本章中，我们创建一个俄罗斯方块游戏副本。</p>
+<h2 id="俄罗斯方块"><a href="#俄罗斯方块" class="headerlink" title="俄罗斯方块"></a>俄罗斯方块</h2><p>俄罗斯方块是有史以来最流行的电脑游戏之一。原始游戏由俄罗斯程序员 <em>Alexy Pajitonv</em> 于 1985 年设计并编写。自那时起，俄罗斯方块便开始以各种形式出现在几乎所有平台上。</p>
+<p>俄罗斯方块被称为下落方块益智游戏。在游戏中，我们有 7 种被称为四连方块的不同形状：S 形、Z 形、T 形、L 形、线形、反 L 形和方形。每种形状都由四个方块组成。形状在棋盘上落下。俄罗斯方块的游戏目标是移动并旋转形状，使它们尽可能相互适合。如果我们设法组成了一整行，这行将被破坏，我们将得分。俄罗斯方块可以一直玩，直到堆满顶层。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/tetrominoes.png?ezimgfmt=rs:328x132/rscb1/ngcb1/notWebP" alt="Tetrominoes" loading="lazy"><br>Figure: Tetrominoes</p>
+<p>PyQt6 是设计用于创建应用程序的工具包。有一些其它库是用于创建电脑游戏的。然而，PyQt6 和其它应用程序工具包也可以用于创建简单的游戏。</p>
+<p>制作电脑游戏是增进编程技能的好方法。</p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>我们没有为俄罗斯方块准备图像，我们用 PyQt6 编程工具包中提供的绘图 API 来绘制四连方块。每个计算机游戏的背后都有一个数学模型。俄罗斯方块亦然。</p>
+<p>这是游戏背后的一些创意：</p>
+<ul>
+<li>我们用 <code>QtCore.QBasicTimer</code> 来创建游戏循环；</li>
+<li>四连方块是绘制出来的；</li>
+<li>形状以正方形为单位移动（而不是像素）。</li>
+<li>从数学上讲，棋盘是一个简单的数列。</li>
+</ul>
+<p>代码由四个类组成：<code>Teris</code>、<code>Board</code>、<code>Terominoe</code> 和 <code>Shape</code>。<code>Teris</code> 类设立了游戏。<code>Borad</code> 类是编写游戏逻辑的地方。<code>Terominoe</code> 类包含所有俄罗斯方块的名称。<code>Shape</code> 类包含俄罗斯方块的代码。</p>
+<figure class="highlight py"><figcaption><span>tetris.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This is a Tetris game clone.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt, QBasicTimer, pyqtSignal</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPainter, QColor</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QMainWindow, QFrame, QApplication</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Tetris</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;initiates application UI&quot;&quot;&quot;</span></span><br><span class="line">        self.tboard = Board(self)</span><br><span class="line">        self.setCentralWidget(self.tboard)</span><br><span class="line"></span><br><span class="line">        self.statusbar = self.statusBar()</span><br><span class="line">        self.tboard.msg2Statusbar[<span class="built_in">str</span>].connect(self.statusbar.showMessage)</span><br><span class="line"></span><br><span class="line">        self.tboard.start()</span><br><span class="line"></span><br><span class="line">        self.resize(<span class="number">180</span>, <span class="number">380</span>)</span><br><span class="line">        self.center()</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Tetris&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">center</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;centers the window on the screen&quot;&quot;&quot;</span></span><br><span class="line">        qr = self.frameGeometry()</span><br><span class="line">        cp = self.screen().availableGeometry().center()</span><br><span class="line"></span><br><span class="line">        qr.moveCenter(cp)</span><br><span class="line">        self.move(qr.topLeft())</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Board</span>(<span class="title class_ inherited__">QFrame</span>):</span><br><span class="line">    msg2Statusbar = pyqtSignal(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line">    BoardWidth = <span class="number">10</span></span><br><span class="line">    BoardHeight = <span class="number">22</span></span><br><span class="line">    Speed = <span class="number">300</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(parent)</span><br><span class="line"></span><br><span class="line">        self.initBoard()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initBoard</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;initiates board&quot;&quot;&quot;</span></span><br><span class="line">        self.timer = QBasicTimer()</span><br><span class="line">        self.isWaitingAfterLine = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        self.curX = <span class="number">0</span></span><br><span class="line">        self.curY = <span class="number">0</span></span><br><span class="line">        self.numLinesRemoved = <span class="number">0</span></span><br><span class="line">        self.board = []</span><br><span class="line"></span><br><span class="line">        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)</span><br><span class="line">        self.isStarted = <span class="literal">False</span></span><br><span class="line">        self.isPaused = <span class="literal">False</span></span><br><span class="line">        self.clearBoard()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">shapeAt</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;determines shape at the board position&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.board[(y * Board.BoardWidth) + x]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setShapeAt</span>(<span class="params">self, x, y, shape</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;sets a shape at the board&quot;&quot;&quot;</span></span><br><span class="line">        self.board[(y * Board.BoardWidth) + x] = shape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">squareWidth</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns the width of one square&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.contentsRect().width() // Board.BoardWidth</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">squareHeight</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns the height of one square&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.contentsRect().height() // Board.BoardHeight</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;starts game&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.isPaused:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.isStarted = <span class="literal">True</span></span><br><span class="line">        self.isWaitingAfterLine = <span class="literal">False</span></span><br><span class="line">        self.numLinesRemoved = <span class="number">0</span></span><br><span class="line">        self.clearBoard()</span><br><span class="line"></span><br><span class="line">        self.msg2Statusbar.emit(<span class="built_in">str</span>(self.numLinesRemoved))</span><br><span class="line"></span><br><span class="line">        self.newPiece()</span><br><span class="line">        self.timer.start(Board.Speed, self)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pause</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;pauses game&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.isStarted:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.isPaused = <span class="keyword">not</span> self.isPaused</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.isPaused:</span><br><span class="line">            self.timer.stop()</span><br><span class="line">            self.msg2Statusbar.emit(<span class="string">&quot;paused&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.timer.start(Board.Speed, self)</span><br><span class="line">            self.msg2Statusbar.emit(<span class="built_in">str</span>(self.numLinesRemoved))</span><br><span class="line"></span><br><span class="line">        self.update()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;paints all shapes of the game&quot;&quot;&quot;</span></span><br><span class="line">        painter = QPainter(self)</span><br><span class="line">        rect = self.contentsRect()</span><br><span class="line"></span><br><span class="line">        boardTop = rect.bottom() - Board.BoardHeight * self.squareHeight()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">                shape = self.shapeAt(j, Board.BoardHeight - i - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> shape != Tetrominoe.NoShape:</span><br><span class="line">                    self.drawSquare(painter,</span><br><span class="line">                                    rect.left() + j * self.squareWidth(),</span><br><span class="line">                                    boardTop + i * self.squareHeight(), shape)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.curPiece.shape() != Tetrominoe.NoShape:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">                x = self.curX + self.curPiece.x(i)</span><br><span class="line">                y = self.curY - self.curPiece.y(i)</span><br><span class="line">                self.drawSquare(painter, rect.left() + x * self.squareWidth(),</span><br><span class="line">                            boardTop + (Board.BoardHeight - y - <span class="number">1</span>) * self.squareHeight(),</span><br><span class="line">                            self.curPiece.shape())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">keyPressEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;processes key press events&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.isStarted <span class="keyword">or</span> self.curPiece.shape() == Tetrominoe.NoShape:</span><br><span class="line">            <span class="built_in">super</span>(Board, self).keyPressEvent(event)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        key = event.key()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> key == Qt.Key.Key_P:</span><br><span class="line">            self.pause()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.isPaused:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_Left.value:</span><br><span class="line">            self.tryMove(self.curPiece, self.curX - <span class="number">1</span>, self.curY)</span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_Right.value:</span><br><span class="line">            self.tryMove(self.curPiece, self.curX + <span class="number">1</span>, self.curY)</span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_Down.value:</span><br><span class="line">            self.tryMove(self.curPiece.rotateRight(), self.curX, self.curY)</span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_Up.value:</span><br><span class="line">            self.tryMove(self.curPiece.rotateLeft(), self.curX, self.curY)</span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_Space.value:</span><br><span class="line">            self.dropDown()</span><br><span class="line">        <span class="keyword">elif</span> key == Qt.Key.Key_D.value:</span><br><span class="line">            self.oneLineDown()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">super</span>(Board, self).keyPressEvent(event)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">timerEvent</span>(<span class="params">self, event</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;handles timer event&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> event.timerId() == self.timer.timerId():</span><br><span class="line">            <span class="keyword">if</span> self.isWaitingAfterLine:</span><br><span class="line">                self.isWaitingAfterLine = <span class="literal">False</span></span><br><span class="line">                self.newPiece()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.oneLineDown()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">super</span>(Board, self).timerEvent(event)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">clearBoard</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;clears shapes from the board&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight * Board.BoardWidth):</span><br><span class="line">            self.board.append(Tetrominoe.NoShape)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dropDown</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;drops down a shape&quot;&quot;&quot;</span></span><br><span class="line">        newY = self.curY</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> newY &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.tryMove(self.curPiece, self.curX, newY - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">            newY -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.pieceDropped()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">oneLineDown</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;goes one line down with a shape&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.tryMove(self.curPiece, self.curX, self.curY - <span class="number">1</span>):</span><br><span class="line">            self.pieceDropped()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pieceDropped</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;after dropping shape, remove full lines and create new shape&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            x = self.curX + self.curPiece.x(i)</span><br><span class="line">            y = self.curY - self.curPiece.y(i)</span><br><span class="line">            self.setShapeAt(x, y, self.curPiece.shape())</span><br><span class="line"></span><br><span class="line">        self.removeFullLines()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.isWaitingAfterLine:</span><br><span class="line">            self.newPiece()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeFullLines</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;removes all full lines from the board&quot;&quot;&quot;</span></span><br><span class="line">        numFullLines = <span class="number">0</span></span><br><span class="line">        rowsToRemove = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight):</span><br><span class="line">            n = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self.shapeAt(j, i) == Tetrominoe.NoShape:</span><br><span class="line">                    n = n + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">10</span>:</span><br><span class="line">                rowsToRemove.append(i)</span><br><span class="line"></span><br><span class="line">        rowsToRemove.reverse()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> m <span class="keyword">in</span> rowsToRemove:</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m, Board.BoardHeight):</span><br><span class="line">                <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">                    self.setShapeAt(l, k, self.shapeAt(l, k + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        numFullLines = numFullLines + <span class="built_in">len</span>(rowsToRemove)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> numFullLines &gt; <span class="number">0</span>:</span><br><span class="line">            self.numLinesRemoved = self.numLinesRemoved + numFullLines</span><br><span class="line">            self.msg2Statusbar.emit(<span class="built_in">str</span>(self.numLinesRemoved))</span><br><span class="line"></span><br><span class="line">            self.isWaitingAfterLine = <span class="literal">True</span></span><br><span class="line">            self.curPiece.setShape(Tetrominoe.NoShape)</span><br><span class="line">            self.update()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">newPiece</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;creates a new shape&quot;&quot;&quot;</span></span><br><span class="line">        self.curPiece = Shape()</span><br><span class="line">        self.curPiece.setRandomShape()</span><br><span class="line">        self.curX = Board.BoardWidth // <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">        self.curY = Board.BoardHeight - <span class="number">1</span> + self.curPiece.minY()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.tryMove(self.curPiece, self.curX, self.curY):</span><br><span class="line">            self.curPiece.setShape(Tetrominoe.NoShape)</span><br><span class="line">            self.timer.stop()</span><br><span class="line">            self.isStarted = <span class="literal">False</span></span><br><span class="line">            self.msg2Statusbar.emit(<span class="string">&quot;Game over&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tryMove</span>(<span class="params">self, newPiece, newX, newY</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;tries to move a shape&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            x = newX + newPiece.x(i)</span><br><span class="line">            y = newY - newPiece.y(i)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> x &gt;= Board.BoardWidth <span class="keyword">or</span> y &lt; <span class="number">0</span> <span class="keyword">or</span> y &gt;= Board.BoardHeight:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> self.shapeAt(x, y) != Tetrominoe.NoShape:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        self.curPiece = newPiece</span><br><span class="line">        self.curX = newX</span><br><span class="line">        self.curY = newY</span><br><span class="line">        self.update()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawSquare</span>(<span class="params">self, painter, x, y, shape</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;draws a square of a shape&quot;&quot;&quot;</span></span><br><span class="line">        colorTable = [<span class="number">0x000000</span>, <span class="number">0xCC6666</span>, <span class="number">0x66CC66</span>, <span class="number">0x6666CC</span>,</span><br><span class="line">                      <span class="number">0xCCCC66</span>, <span class="number">0xCC66CC</span>, <span class="number">0x66CCCC</span>, <span class="number">0xDAAA00</span>]</span><br><span class="line"></span><br><span class="line">        color = QColor(colorTable[shape])</span><br><span class="line">        painter.fillRect(x + <span class="number">1</span>, y + <span class="number">1</span>, self.squareWidth() - <span class="number">2</span>,</span><br><span class="line">                         self.squareHeight() - <span class="number">2</span>, color)</span><br><span class="line"></span><br><span class="line">        painter.setPen(color.lighter())</span><br><span class="line">        painter.drawLine(x, y + self.squareHeight() - <span class="number">1</span>, x, y)</span><br><span class="line">        painter.drawLine(x, y, x + self.squareWidth() - <span class="number">1</span>, y)</span><br><span class="line"></span><br><span class="line">        painter.setPen(color.darker())</span><br><span class="line">        painter.drawLine(x + <span class="number">1</span>, y + self.squareHeight() - <span class="number">1</span>,</span><br><span class="line">                         x + self.squareWidth() - <span class="number">1</span>, y + self.squareHeight() - <span class="number">1</span>)</span><br><span class="line">        painter.drawLine(x + self.squareWidth() - <span class="number">1</span>,</span><br><span class="line">                         y + self.squareHeight() - <span class="number">1</span>, x + self.squareWidth() - <span class="number">1</span>, y + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Tetrominoe</span>:</span><br><span class="line">    NoShape = <span class="number">0</span></span><br><span class="line">    ZShape = <span class="number">1</span></span><br><span class="line">    SShape = <span class="number">2</span></span><br><span class="line">    LineShape = <span class="number">3</span></span><br><span class="line">    TShape = <span class="number">4</span></span><br><span class="line">    SquareShape = <span class="number">5</span></span><br><span class="line">    LShape = <span class="number">6</span></span><br><span class="line">    MirroredLShape = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span>:</span><br><span class="line">    coordsTable = (</span><br><span class="line">        ((<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>)),</span><br><span class="line">        ((<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">1</span>)),</span><br><span class="line">        ((<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">1</span>)),</span><br><span class="line">        ((<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">2</span>)),</span><br><span class="line">        ((-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)),</span><br><span class="line">        ((<span class="number">0</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">1</span>)),</span><br><span class="line">        ((-<span class="number">1</span>, -<span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)),</span><br><span class="line">        ((<span class="number">1</span>, -<span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.coords = [[<span class="number">0</span>, <span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line">        self.pieceShape = Tetrominoe.NoShape</span><br><span class="line"></span><br><span class="line">        self.setShape(Tetrominoe.NoShape)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">shape</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns shape&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.pieceShape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setShape</span>(<span class="params">self, shape</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;sets a shape&quot;&quot;&quot;</span></span><br><span class="line">        table = Shape.coordsTable[shape]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">                self.coords[i][j] = table[i][j]</span><br><span class="line"></span><br><span class="line">        self.pieceShape = shape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setRandomShape</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;chooses a random shape&quot;&quot;&quot;</span></span><br><span class="line">        self.setShape(random.randint(<span class="number">1</span>, <span class="number">7</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">x</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns x coordinate&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.coords[index][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">y</span>(<span class="params">self, index</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns y coordinate&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> self.coords[index][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setX</span>(<span class="params">self, index, x</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;sets x coordinate&quot;&quot;&quot;</span></span><br><span class="line">        self.coords[index][<span class="number">0</span>] = x</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setY</span>(<span class="params">self, index, y</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;sets y coordinate&quot;&quot;&quot;</span></span><br><span class="line">        self.coords[index][<span class="number">1</span>] = y</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minX</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns min x value&quot;&quot;&quot;</span></span><br><span class="line">        m = self.coords[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            m = <span class="built_in">min</span>(m, self.coords[i][<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxX</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns max x value&quot;&quot;&quot;</span></span><br><span class="line">        m = self.coords[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            m = <span class="built_in">max</span>(m, self.coords[i][<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minY</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns min y value&quot;&quot;&quot;</span></span><br><span class="line">        m = self.coords[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            m = <span class="built_in">min</span>(m, self.coords[i][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxY</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;returns max y value&quot;&quot;&quot;</span></span><br><span class="line">        m = self.coords[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            m = <span class="built_in">max</span>(m, self.coords[i][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rotateLeft</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;rotates shape to the left&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.pieceShape == Tetrominoe.SquareShape:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">        result = Shape()</span><br><span class="line">        result.pieceShape = self.pieceShape</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            result.setX(i, self.y(i))</span><br><span class="line">            result.setY(i, -self.x(i))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rotateRight</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;rotates shape to the right&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> self.pieceShape == Tetrominoe.SquareShape:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">        result = Shape()</span><br><span class="line">        result.pieceShape = self.pieceShape</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">            result.setX(i, -self.y(i))</span><br><span class="line">            result.setY(i, self.x(i))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication([])</span><br><span class="line">    tetris = Tetris()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>游戏被简化了一些，以便容易理解。游戏启动后立即开始。我们可以按 P 键来暂停游戏。空格键使方块立即掉落到底部。游戏以恒定速度运行，未实现加速功能。分数即移除行的数量。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.tboard = Board(self)</span><br><span class="line">self.setCentralWidget(self.tboard)</span><br></pre></td></tr></table></figure>
+
+<p>创建了一个 <code>Board</code> 类实例，并设置它为应用程序的中心小部件。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.statusbar = self.statusBar()</span><br><span class="line">self.tboard.msg2Statusbar[<span class="built_in">str</span>].connect(self.statusbar.showMessage)</span><br></pre></td></tr></table></figure>
+
+<p>我们创建一个状态栏用于显示信息。我们将显示三种可能的消息：已移除的行数、暂停消息或游戏结束消息。<code>msg2Statusbar</code> 是在 <code>Board</code> 类中实现的自定义信号。<code>showMessage()</code> 是内置方法，用于在状态栏显示消息。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.tboard.start()</span><br></pre></td></tr></table></figure>
+
+<p>本行初始化游戏。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Board</span>(<span class="title class_ inherited__">QFrame</span>):</span><br><span class="line">    msg2Statusbar = pyqtSignal(<span class="built_in">str</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>pyqtSignal</code> 创建一个自定义信号。<code>msg2Statusbar</code> 是一个信号，当我们想将消息或分数写入状态栏时被发出。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">BoardWidth = <span class="number">10</span></span><br><span class="line">BoardHeight = <span class="number">22</span></span><br><span class="line">Speed = <span class="number">300</span></span><br></pre></td></tr></table></figure>
+
+<p>这些是 <code>Board</code> 类变量。<code>BoardWidth</code> 和 <code>BoardHeight</code> 定义了棋盘中方格的尺寸。<code>Speed</code> 定义了游戏速度。每 300ms 开始一个新的游戏循环。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">self.curX = <span class="number">0</span></span><br><span class="line">self.curY = <span class="number">0</span></span><br><span class="line">self.numLinesRemoved = <span class="number">0</span></span><br><span class="line">self.board = []</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>initBoard()</code> 方法中我们初始化一些重要变量。<code>self.board</code> 变量是数字 0 到 7 的数组。它代表了各种形状的位置和棋盘上的剩余部分。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">shapeAt</span>(<span class="params">self, x, y</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;determines shape at the board position&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> self.board[(y * Board.BoardWidth) + x]</span><br></pre></td></tr></table></figure>
+
+<p><code>shapeAt()</code> 方法明确了给定方块的形状。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">squareWidth</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;returns the width of one square&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> self.contentsRect().width() // Board.BoardWidth</span><br></pre></td></tr></table></figure>
+
+<p>棋盘可以动态调整大小。因此块的大小可能变化。<code>squareWidth()</code> 方法计算单个方块的宽度并返回之，单位为像素。<code>Board.BoardWidth</code> 是棋盘尺寸，单位为块。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pause</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;pauses game&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> self.isStarted:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    self.isPaused = <span class="keyword">not</span> self.isPaused</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.isPaused:</span><br><span class="line">        self.timer.stop()</span><br><span class="line">        self.msg2Statusbar.emit(<span class="string">&quot;paused&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.timer.start(Board.Speed, self)</span><br><span class="line">        self.msg2Statusbar.emit(<span class="built_in">str</span>(self.numLinesRemoved))</span><br><span class="line"></span><br><span class="line">    self.update()</span><br></pre></td></tr></table></figure>
+
+<p><code>pause()</code> 方法可以暂停游戏。它停止计时器，并显示消息到状态栏。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">paintEvent</span>(<span class="params">self, event</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;paints all shapes of the game&quot;&quot;&quot;</span></span><br><span class="line">    painter = QPainter(self)</span><br><span class="line">    rect = self.contentsRect()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>绘制发生在 <code>paintEvent()</code> 方法中。<code>QPainter</code> 负责 PyQt6 中所有低等级绘制。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">        shape = self.shapeAt(j, Board.BoardHeight - i - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> shape != Tetrominoe.NoShape:</span><br><span class="line">            self.drawSquare(</span><br><span class="line">                painter,</span><br><span class="line">                rect.left() + j * self.squareWidth(),</span><br><span class="line">                boardTop + i * self.squareHeight(),</span><br><span class="line">                shape,</span><br><span class="line">            )</span><br></pre></td></tr></table></figure>
+
+<p>游戏的绘制分为两步。第一步，我们绘制所有形状，或形状沉入棋盘下的剩余部分。所有形状都记在 <code>self.board</code> 列表中。可通过 <code>shaptAt()</code> 方法访问该变量。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> self.curPiece.shape() != Tetrominoe.NoShape:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        x = self.curX + self.curPiece.x(i)</span><br><span class="line">        y = self.curY - self.curPiece.y(i)</span><br><span class="line">        self.drawSquare(painter, rect.left() + x * self.squareWidth(),</span><br><span class="line">            boardTop + (Board.BoardHeight - y - <span class="number">1</span>) * self.squareHeight(),</span><br><span class="line">            self.curPiece.shape())</span><br></pre></td></tr></table></figure>
+
+<p>下一步，是绘制实际要落下的块。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">elif</span> key == Qt.Key.Key_Right.value:</span><br><span class="line">    self.tryMove(self.curPiece, self.curX + <span class="number">1</span>, self.curY)</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>keyPressEvent()</code> 方法中，我们检查哪个键被按下。如果按下了右箭头键，我们尝试将块向右移动一格。说尝试，是因为块可能无法移动。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">elif</span> key == Qt.Key.Key_Up.value:</span><br><span class="line">    self.tryMove(self.curPiece.rotateLeft(), self.curX, self.curY)</span><br></pre></td></tr></table></figure>
+
+<p>上箭头键将向左旋转这个正在落下的块。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">elif</span> key == Qt.Key.Key_Space.value:</span><br><span class="line">    self.dropDown()</span><br></pre></td></tr></table></figure>
+
+<p>空格键将使这个块立即掉落到底部。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">elif</span> key == Qt.Key.Key_D.value:</span><br><span class="line">    self.oneLineDown()</span><br></pre></td></tr></table></figure>
+
+<p>按下 D 键，块将下降一格。这可以让块落下得更快一点儿。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">timerEvent</span>(<span class="params">self, event</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;handles timer event&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> event.timerId() == self.timer.timerId():</span><br><span class="line">        <span class="keyword">if</span> self.isWaitingAfterLine:</span><br><span class="line">            self.isWaitingAfterLine = <span class="literal">False</span></span><br><span class="line">            self.newPiece()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.oneLineDown()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">super</span>(Board, self).timerEvent(event)</span><br></pre></td></tr></table></figure>
+
+<p>在计时器事件中，我们要么在一个块到达底部后创建一个新棋子，要么在一个块到达底部后下降一行。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">clearBoard</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;clears shapes from the board&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight * Board.BoardWidth):</span><br><span class="line">        self.board.append(Tetrominoe.NoShape)</span><br></pre></td></tr></table></figure>
+
+<p><code>clearBoard()</code> 方法通过设置 <code>Tetrominoe.NoShape</code> 来清除棋盘的每个格子。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">removeFullLines</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;removes all full lines from the board&quot;&quot;&quot;</span></span><br><span class="line">    numFullLines = <span class="number">0</span></span><br><span class="line">    rowsToRemove = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardHeight):</span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.shapeAt(j, i) == Tetrominoe.NoShape:</span><br><span class="line">                n = n + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">10</span>:</span><br><span class="line">            rowsToRemove.append(i)</span><br><span class="line"></span><br><span class="line">    rowsToRemove.reverse()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> m <span class="keyword">in</span> rowsToRemove:</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m, Board.BoardHeight):</span><br><span class="line">            <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(Board.BoardWidth):</span><br><span class="line">                    self.setShapeAt(l, k, self.shapeAt(l, k + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    numFullLines = numFullLines + <span class="built_in">len</span>(rowsToRemove)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>如果块到达了底部，我们就调用 <code>removeFullLines()</code> 方法。我们要找到并移除所有已经满了的行。我们的做法是将当前要删除的满行之上的所有行，向下移动一行。注意我们颠倒了删除顺序，否则它可能在本例中无法工作。在本示例中，我们使用朴素重力。这意味着块可能浮空。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">newPiece</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;creates a new shape&quot;&quot;&quot;</span></span><br><span class="line">    self.curPiece = Shape()</span><br><span class="line">    self.curPiece.setRandomShape()</span><br><span class="line">    self.curX = Board.BoardWidth // <span class="number">2</span> + <span class="number">1</span></span><br><span class="line">    self.curY = Board.BoardHeight - <span class="number">1</span> + self.curPiece.minY()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> self.tryMove(self.curPiece, self.curX, self.curY):</span><br><span class="line">        self.curPiece.setShape(Tetrominoe.NoShape)</span><br><span class="line">        self.timer.stop()</span><br><span class="line">        self.isStarted = <span class="literal">False</span></span><br><span class="line">        self.msg2Statusbar.emit(<span class="string">&quot;Game over&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>newPiece()</code> 方法随机创建新的块。如果块无法回到初始位置，则游戏结束。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">tryMove</span>(<span class="params">self, newPiece, newX, newY</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;tries to move a shape&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        x = newX + newPiece.x(i)</span><br><span class="line">        y = newY - newPiece.y(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">or</span> x &gt;= Board.BoardWidth <span class="keyword">or</span> y &lt; <span class="number">0</span> <span class="keyword">or</span> y &gt;= Board.BoardHeight:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.shapeAt(x, y) != Tetrominoe.NoShape:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    self.curPiece = newPiece</span><br><span class="line">    self.curX = newX</span><br><span class="line">    self.curY = newY</span><br><span class="line">    self.update()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>在 <code>tryMove()</code> 方法中，我们尝试移动我们的形状。如果该形状位于棋盘边缘或与其它块相邻，则返回 False。否则，我们将当前的下落块放置到新位置上。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tetrominoe</span>:</span><br><span class="line">    NoShape = <span class="number">0</span></span><br><span class="line">    ZShape = <span class="number">1</span></span><br><span class="line">    SShape = <span class="number">2</span></span><br><span class="line">    LineShape = <span class="number">3</span></span><br><span class="line">    TShape = <span class="number">4</span></span><br><span class="line">    SquareShape = <span class="number">5</span></span><br><span class="line">    LShape = <span class="number">6</span></span><br><span class="line">    MirroredLShape = <span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Tetrominoe</code> 类包含所有可能的形状名称。我们同时还有 <code>NoShape</code> 用于空形状。</p>
+<p><code>Shape</code> 类保存了关于俄罗斯方块的信息。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Shape</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    coordsTable = (</span><br><span class="line">        ((<span class="number">0</span>, <span class="number">0</span>),     (<span class="number">0</span>, <span class="number">0</span>),     (<span class="number">0</span>, <span class="number">0</span>),     (<span class="number">0</span>, <span class="number">0</span>)),</span><br><span class="line">        ((<span class="number">0</span>, -<span class="number">1</span>),    (<span class="number">0</span>, <span class="number">0</span>),     (-<span class="number">1</span>, <span class="number">0</span>),    (-<span class="number">1</span>, <span class="number">1</span>)),</span><br><span class="line">        ...</span><br><span class="line">    )</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><code>coordsTable</code> 元组保存我们的俄罗斯方块的所有可能的坐标值。这是一个模板，所有块都从中获取自己的坐标。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.coords = [[<span class="number">0</span>,<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>在创建时，我们创建一个空坐标列表。该列表用于保存俄罗斯方块的坐标。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/coordinates.png?ezimgfmt=rs:272x230/rscb1/ng:webp/ngcb1" alt="Coordinates" loading="lazy"><br>Figure: Coordinates</p>
+<p>上面的图像将有助于更多地理解坐标值。例如，元组(0，-1)，(0,0)，(-1,0)，(-1，-1)表示 z 形。该图说明了形状。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">rotateLeft</span>(<span class="params">self</span>):</span><br><span class="line"><span class="string">&quot;&quot;&quot;rotates shape to the left&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> self.pieceShape == Tetrominoe.SquareShape:</span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">    result = Shape()</span><br><span class="line">    result.pieceShape = self.pieceShape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">        result.setX(i, self.y(i))</span><br><span class="line">        result.setY(i, -self.x(i))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<p><code>rotateLeft()</code> 方法的作用是向左旋转一个块。正方形不需要旋转。因此我们简单地返回对当前对象的引用。新创建的块的坐标将设置为旋转块的坐标。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/tetris.png?ezimgfmt=rs:182x406/rscb1/ng:webp/ngcb1" alt="Tetris" loading="lazy"><br>Figure: Tetris</p>
+<p>这就是 PyQt6 中的俄罗斯方块游戏。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni90ZXRyaXMv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/customwidgets">上一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>TETRIS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

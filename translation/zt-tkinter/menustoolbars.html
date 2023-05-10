@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们将使用菜单和工具栏。 菜单栏是一个应用程序的经典 UI 部分。它是一组位于各种菜单中的命令集。我们将大多数命令按逻辑性分组。有一些公认的标准，能够进一步降低学习新应用程序的时间成本。菜单组织那些我们可在应用程序中使用的命令。工具栏提供对最常用命令的快捷访问。 Tki">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tkinter 菜单与工具栏">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-tkinter/menustoolbars.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们将使用菜单和工具栏。 菜单栏是一个应用程序的经典 UI 部分。它是一组位于各种菜单中的命令集。我们将大多数命令按逻辑性分组。有一些公认的标准，能够进一步降低学习新应用程序的时间成本。菜单组织那些我们可在应用程序中使用的命令。工具栏提供对最常用命令的快捷访问。 Tki">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/simplemenu.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/submenu.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/popupmenu.png?ezimgfmt=rs:252x176/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/toolbar.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T12:46:45.415Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/tkinter/simplemenu.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-tkinter/menustoolbars">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-tkinter/menustoolbars.html","path":"translation/zt-tkinter/menustoolbars.html","title":"Tkinter 菜单与工具栏"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Tkinter 菜单与工具栏 | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-simple-menu"><span class="nav-number">1.</span> <span class="nav-text">Tkinter simple menu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E5%AD%90%E8%8F%9C%E5%8D%95"><span class="nav-number">2.</span> <span class="nav-text">Tkinter 子菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E5%BC%B9%E5%87%BA%E8%8F%9C%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">Tkinter 弹出菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="nav-number">4.</span> <span class="nav-text">Tkinter 工具栏</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Tkinter 菜单与工具栏
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>MENUSTOOLBARS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL21lbnVzdG9vbGJhcnMv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/widgets">上一章</a> <a href="/translation/zt-tkinter/dialogs">下一章</a></p>
+<blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-05-10</em></p>
+</blockquote>
+<p>在 Tkinter 教程的这一部分，我们将使用菜单和工具栏。</p>
+<p>菜单栏是一个应用程序的经典 UI 部分。它是一组位于各种菜单中的命令集。我们将大多数命令按逻辑性分组。有一些公认的标准，能够进一步降低学习新应用程序的时间成本。菜单组织那些我们可在应用程序中使用的命令。工具栏提供对最常用命令的快捷访问。</p>
+<h2 id="Tkinter-simple-menu"><a href="#Tkinter-simple-menu" class="headerlink" title="Tkinter simple menu"></a>Tkinter simple menu</h2><p>第一个示例显示了简单的菜单栏。</p>
+<figure class="highlight py"><figcaption><span>simple_menu.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program shows a simple</span></span><br><span class="line"><span class="string">menu. It has one action, which</span></span><br><span class="line"><span class="string">will terminate the program, when</span></span><br><span class="line"><span class="string">selected.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Menu</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Simple menu&quot;</span>)</span><br><span class="line"></span><br><span class="line">        menubar = Menu(self.master)</span><br><span class="line">        self.master.config(menu=menubar)</span><br><span class="line"></span><br><span class="line">        fileMenu = Menu(menubar)</span><br><span class="line">        fileMenu.add_command(label=<span class="string">&quot;Exit&quot;</span>, command=self.onExit)</span><br><span class="line">        menubar.add_cascade(label=<span class="string">&quot;File&quot;</span>, menu=fileMenu)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onExit</span>(<span class="params">self</span>):</span><br><span class="line">        self.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;250x150+300+300&quot;</span>)</span><br><span class="line">    app = Example()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>本示例将显示包含一项的菜单。通过选择退出菜单项，我们关闭应用程序。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">menubar = Menu(self.master)</span><br><span class="line">self.master.config(menu=menubar)</span><br></pre></td></tr></table></figure>
+<p>此处我们创建一个菜单栏。它是一个常规 <code>Menu</code> 小部件，被配置为根窗口的菜单栏。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">fileMenu = Menu(menubar)</span><br></pre></td></tr></table></figure>
+<p>我们创建一个「文件」菜单对象。菜单是包含命令的下拉窗口。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">fileMenu.add_command(label=<span class="string">&quot;Exit&quot;</span>, command=self.onExit)</span><br></pre></td></tr></table></figure>
+<p>我们添加命令到「文件」菜单中。此命令将调用 <code>onExit()</code> 方法。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">menubar.add_cascade(label=<span class="string">&quot;File&quot;</span>, menu=fileMenu)</span><br></pre></td></tr></table></figure>
+<p>「文件」菜单通过 <code>add_cascade()</code> 方法添加到了菜单栏中。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/simplemenu.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1" alt="Simple menu" loading="lazy"><br>Figure: Simple menu</p>
+<h2 id="Tkinter-子菜单"><a href="#Tkinter-子菜单" class="headerlink" title="Tkinter 子菜单"></a>Tkinter 子菜单</h2><p>子菜单是插入到其它菜单中的菜单对象。下个示例将进行演示。</p>
+<figure class="highlight py"><figcaption><span>submenu.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this script we create a submenu</span></span><br><span class="line"><span class="string">a separator and keyboard shortcuts to menus.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Menu</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Submenu&quot;</span>)</span><br><span class="line"></span><br><span class="line">        menubar = Menu(self.master)</span><br><span class="line">        self.master.config(menu=menubar)</span><br><span class="line"></span><br><span class="line">        fileMenu = Menu(menubar)</span><br><span class="line"></span><br><span class="line">        submenu = Menu(fileMenu)</span><br><span class="line">        submenu.add_command(label=<span class="string">&quot;New feed&quot;</span>)</span><br><span class="line">        submenu.add_command(label=<span class="string">&quot;Bookmarks&quot;</span>)</span><br><span class="line">        submenu.add_command(label=<span class="string">&quot;Mail&quot;</span>)</span><br><span class="line">        fileMenu.add_cascade(label=<span class="string">&#x27;Import&#x27;</span>, menu=submenu, underline=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        fileMenu.add_separator()</span><br><span class="line"></span><br><span class="line">        fileMenu.add_command(label=<span class="string">&quot;Exit&quot;</span>, underline=<span class="number">0</span>, command=self.onExit)</span><br><span class="line">        menubar.add_cascade(label=<span class="string">&quot;File&quot;</span>, underline=<span class="number">0</span>, menu=fileMenu)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onExit</span>(<span class="params">self</span>):</span><br><span class="line">        self.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;250x150+300+300&quot;</span>)</span><br><span class="line">    app = Example()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在本示例中，我们在文件菜单的子菜单中有三个选项。我们创建了一个分隔符和键盘快捷键。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">submenu = Menu(fileMenu)</span><br><span class="line">submenu.add_command(label=<span class="string">&quot;New feed&quot;</span>)</span><br><span class="line">submenu.add_command(label=<span class="string">&quot;Bookmarks&quot;</span>)</span><br><span class="line">submenu.add_command(label=<span class="string">&quot;Mail&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>我们有一个包含三个命令的子菜单。该子菜单是常规菜单。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">fileMenu.add_cascade(label=<span class="string">&#x27;Import&#x27;</span>, menu=submenu, underline=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>通过添加菜单到 <code>fileMenu</code> 而非菜单栏，我们就创建了子菜单。<code>underline</code> 参数创建键盘快捷键。它提供一个应标下划线字符的位置。在我们的例子中，它是首位。位置自零开始。当我们点击「文件」菜单时，显示弹出窗口。「导入」菜单有一个下划线字符。我们可以用鼠标指针或 Alt+I 快捷键选中它。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">fileMenu.add_separator()</span><br></pre></td></tr></table></figure>
+<p>分隔符是一条水平线，在视觉上划分菜单命令。通过这种方式，我们可以将菜单项按逻辑性分组。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/submenu.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1" alt="Submenu" loading="lazy"><br>Figure: Submenu</p>
+<h2 id="Tkinter-弹出菜单"><a href="#Tkinter-弹出菜单" class="headerlink" title="Tkinter 弹出菜单"></a>Tkinter 弹出菜单</h2><p>在下个示例中，我们创建一个弹出菜单。弹出菜单也称为上下文菜单。它可以显示在窗口的客户端区域的任何地方。</p>
+<figure class="highlight py"><figcaption><span>popup_menu.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this program, we create</span></span><br><span class="line"><span class="string">a popup menu.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Menu</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Popup menu&quot;</span>)</span><br><span class="line">        self.menu = Menu(self.master, tearoff=<span class="number">0</span>)</span><br><span class="line">        self.menu.add_command(label=<span class="string">&quot;Beep&quot;</span>, command=self.bell)</span><br><span class="line">        self.menu.add_command(label=<span class="string">&quot;Exit&quot;</span>, command=self.onExit)</span><br><span class="line"></span><br><span class="line">        self.master.bind(<span class="string">&quot;&lt;Button-3&gt;&quot;</span>, self.showMenu)</span><br><span class="line">        self.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showMenu</span>(<span class="params">self, e</span>):</span><br><span class="line">        self.menu.post(e.x_root, e.y_root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onExit</span>(<span class="params">self</span>):</span><br><span class="line">        self.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;250x150+300+300&quot;</span>)</span><br><span class="line">    app = Example()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在本示例中，我们创建一个带两条命令的弹出菜单。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.menu = Menu(self.master, tearoff=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>上下文菜单是常规 <code>Menu</code> 小部件。<code>tearoff</code> 特性被关闭。现在它无法将窗口分离到顶层窗口中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.master.bind(<span class="string">&quot;&lt;Button-3&gt;&quot;</span>, self.showMenu)</span><br></pre></td></tr></table></figure>
+<p>我们将 <code>&lt;Button-3&gt;</code> 事件绑定到 <code>showMenu()</code> 方法上。该事件将在我们右击窗口的客户端区域时生成。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">showMenu</span>(<span class="params">self, e</span>):</span><br><span class="line">    self.menu.post(e.x_root, e.y_root)</span><br></pre></td></tr></table></figure>
+<p><code>showMenu()</code> 方法显示上下文菜单。该弹出菜单显示在鼠标点击的 x 与 y 坐标出。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/popupmenu.png?ezimgfmt=rs:252x176/rscb1/ng:webp/ngcb1" alt="Popup menu" loading="lazy"><br>Figure: Popup menu</p>
+<h2 id="Tkinter-工具栏"><a href="#Tkinter-工具栏" class="headerlink" title="Tkinter 工具栏"></a>Tkinter 工具栏</h2><p>菜单组织那些我们可在应用程序中使用的命令。工具栏提供对最常用命令的快捷访问。Tkinter 中没有工具栏小部件。</p>
+<figure class="highlight py"><figcaption><span>toolbar.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this program, we create a toolbar.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Menu, Button</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> LEFT, TOP, X, FLAT, RAISED</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Toolbar&quot;</span>)</span><br><span class="line"></span><br><span class="line">        menubar = Menu(self.master)</span><br><span class="line">        self.fileMenu = Menu(self.master, tearoff=<span class="number">0</span>)</span><br><span class="line">        self.fileMenu.add_command(label=<span class="string">&quot;Exit&quot;</span>, command=self.onExit)</span><br><span class="line">        menubar.add_cascade(label=<span class="string">&quot;File&quot;</span>, menu=self.fileMenu)</span><br><span class="line"></span><br><span class="line">        toolbar = Frame(self.master, bd=<span class="number">1</span>, relief=RAISED)</span><br><span class="line"></span><br><span class="line">        self.img = Image.<span class="built_in">open</span>(<span class="string">&quot;exit.png&quot;</span>)</span><br><span class="line">        eimg = ImageTk.PhotoImage(self.img)</span><br><span class="line"></span><br><span class="line">        exitButton = Button(toolbar, image=eimg, relief=FLAT,</span><br><span class="line">            command=self.quit)</span><br><span class="line">        exitButton.image = eimg</span><br><span class="line">        exitButton.pack(side=LEFT, padx=<span class="number">2</span>, pady=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        toolbar.pack(side=TOP, fill=X)</span><br><span class="line">        self.master.config(menu=menubar)</span><br><span class="line">        self.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onExit</span>(<span class="params">self</span>):</span><br><span class="line">        self.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;250x150+300+300&quot;</span>)</span><br><span class="line">    app = Example()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>我们的工具栏在框架上，我们将按钮放入其中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">toolbar = Frame(self.master, bd=<span class="number">1</span>, relief=RAISED)</span><br></pre></td></tr></table></figure>
+<p>创建了一个菜单栏。它是一个框架。我们创建了一个凸起的边框，以便工具栏的边框可见。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.img = Image.<span class="built_in">open</span>(<span class="string">&quot;exit.png&quot;</span>)</span><br><span class="line">eimg = ImageTk.PhotoImage(self.img)</span><br></pre></td></tr></table></figure>
+<p>创建了用于工具栏按钮的图像和照片图像。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">exitButton = Button(toolbar, image=eimg, relief=FLAT,</span><br><span class="line">    command=self.quit)</span><br></pre></td></tr></table></figure>
+<p>创建了按钮小部件。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">exitButton.pack(side=LEFT, padx=<span class="number">2</span>, pady=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>工具栏是一个框架，而框架是容器小部件。我们将按钮装入左侧，并在右侧加入填充。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">toolbar.pack(side=TOP, fill=X)</span><br></pre></td></tr></table></figure>
+<p>工具栏本身被打包到顶层菜单上；它水平伸展。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/toolbar.png?ezimgfmt=rs:252x206/rscb1/ng:webp/ngcb1" alt="Toolbar" loading="lazy"><br>Figure: Toolbar</p>
+<p>在 Tkinter 教程的这一部分，我们使用了菜单和工具栏。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL21lbnVzdG9vbGJhcnMv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/widgets">上一章</a> <a href="/translation/zt-tkinter/dialogs">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>MENUSTOOLBARS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

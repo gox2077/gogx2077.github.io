@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们创建一个贪吃蛇游戏副本。 贪吃蛇是一个古老而经典的电子游戏。它最初创建于 70 年代末。后来它被引入个人电脑。在这个游戏中，玩家控制一条蛇。目标是尽可能吃掉更多的苹果。每当蛇吃掉一颗苹果，身体就长长一点。蛇必须避开墙壁和自己的身体。 开发蛇身体每一节的大小是 10px。用光">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tkinter 贪吃蛇">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-tkinter/snake.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们创建一个贪吃蛇游戏副本。 贪吃蛇是一个古老而经典的电子游戏。它最初创建于 70 年代末。后来它被引入个人电脑。在这个游戏中，玩家控制一条蛇。目标是尽可能吃掉更多的苹果。每当蛇吃掉一颗苹果，身体就长长一点。蛇必须避开墙壁和自己的身体。 开发蛇身体每一节的大小是 10px。用光">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/snake.png?ezimgfmt=rs:302x326/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T12:47:02.229Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/tkinter/snake.png?ezimgfmt=rs:302x326/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-tkinter/snake">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-tkinter/snake.html","path":"translation/zt-tkinter/snake.html","title":"Tkinter 贪吃蛇"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Tkinter 贪吃蛇 | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">开发</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Tkinter 贪吃蛇
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>SNAKE</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL3NuYWtlLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/drawing">上一章</a></p>
+<blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-05-10</em></p>
+</blockquote>
+<p>在 Tkinter 教程的这一部分，我们创建一个贪吃蛇游戏副本。</p>
+<p>贪吃蛇是一个古老而经典的电子游戏。它最初创建于 70 年代末。后来它被引入个人电脑。在这个游戏中，玩家控制一条蛇。目标是尽可能吃掉更多的苹果。每当蛇吃掉一颗苹果，身体就长长一点。蛇必须避开墙壁和自己的身体。</p>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><p>蛇身体每一节的大小是 10px。用光标键控制蛇。最初，蛇有三节。游戏立即开始。当游戏结束时，我们将在屏幕中间显示游戏结束和分数。</p>
+<p>我们使用 <code>Canvas</code> 小部件来创建此游戏。游戏中的对象是图像。我们用画布方法创建图像项。我们通过画布方法使用标签来找到画布上的项目，进行碰撞检测。</p>
+<figure class="highlight py"><figcaption><span>snake.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This is a simple Snake game</span></span><br><span class="line"><span class="string">clone.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Canvas, ALL, NW</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cons</span>:</span><br><span class="line">    BOARD_WIDTH = <span class="number">300</span></span><br><span class="line">    BOARD_HEIGHT = <span class="number">300</span></span><br><span class="line">    DELAY = <span class="number">100</span></span><br><span class="line">    DOT_SIZE = <span class="number">10</span></span><br><span class="line">    MAX_RAND_POS = <span class="number">27</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Board</span>(<span class="title class_ inherited__">Canvas</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(width=Cons.BOARD_WIDTH, height=Cons.BOARD_HEIGHT,</span><br><span class="line">            background=<span class="string">&quot;black&quot;</span>, highlightthickness=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        self.initGame()</span><br><span class="line">        self.pack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initGame</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;initializes game&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        self.inGame = <span class="literal">True</span></span><br><span class="line">        self.dots = <span class="number">3</span></span><br><span class="line">        self.score = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># variables used to move snake object</span></span><br><span class="line">        self.moveX = Cons.DOT_SIZE</span><br><span class="line">        self.moveY = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># starting apple coordinates</span></span><br><span class="line">        self.appleX = <span class="number">100</span></span><br><span class="line">        self.appleY = <span class="number">190</span></span><br><span class="line"></span><br><span class="line">        self.loadImages()</span><br><span class="line"></span><br><span class="line">        self.createObjects()</span><br><span class="line">        self.locateApple()</span><br><span class="line">        self.bind_all(<span class="string">&quot;&lt;Key&gt;&quot;</span>, self.onKeyPressed)</span><br><span class="line">        self.after(Cons.DELAY, self.onTimer)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">loadImages</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;loads images from the disk&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.idot = Image.<span class="built_in">open</span>(<span class="string">&quot;dot.png&quot;</span>)</span><br><span class="line">            self.dot = ImageTk.PhotoImage(self.idot)</span><br><span class="line">            self.ihead = Image.<span class="built_in">open</span>(<span class="string">&quot;head.png&quot;</span>)</span><br><span class="line">            self.head = ImageTk.PhotoImage(self.ihead)</span><br><span class="line">            self.iapple = Image.<span class="built_in">open</span>(<span class="string">&quot;apple.png&quot;</span>)</span><br><span class="line">            self.apple = ImageTk.PhotoImage(self.iapple)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">            <span class="built_in">print</span>(e)</span><br><span class="line">            sys.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createObjects</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;creates objects on Canvas&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        self.create_text(<span class="number">30</span>, <span class="number">10</span>, text=<span class="string">&quot;Score: &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score),</span><br><span class="line">                         tag=<span class="string">&quot;score&quot;</span>, fill=<span class="string">&quot;white&quot;</span>)</span><br><span class="line">        self.create_image(self.appleX, self.appleY, image=self.apple,</span><br><span class="line">            anchor=NW, tag=<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">        self.create_image(<span class="number">50</span>, <span class="number">50</span>, image=self.head, anchor=NW,  tag=<span class="string">&quot;head&quot;</span>)</span><br><span class="line">        self.create_image(<span class="number">30</span>, <span class="number">50</span>, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">        self.create_image(<span class="number">40</span>, <span class="number">50</span>, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkAppleCollision</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;checks if the head of snake collides with apple&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        apple = self.find_withtag(<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">        head = self.find_withtag(<span class="string">&quot;head&quot;</span>)</span><br><span class="line"></span><br><span class="line">        x1, y1, x2, y2 = self.bbox(head)</span><br><span class="line">        overlap = self.find_overlapping(x1, y1, x2, y2)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ovr <span class="keyword">in</span> overlap:</span><br><span class="line">            <span class="keyword">if</span> apple[<span class="number">0</span>] == ovr:</span><br><span class="line">                self.score += <span class="number">1</span></span><br><span class="line">                x, y = self.coords(apple)</span><br><span class="line">                self.create_image(x, y, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">                self.locateApple()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">moveSnake</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;moves the Snake object&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        dots = self.find_withtag(<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">        head = self.find_withtag(<span class="string">&quot;head&quot;</span>)</span><br><span class="line"></span><br><span class="line">        items = dots + head</span><br><span class="line"></span><br><span class="line">        z = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> z &lt; <span class="built_in">len</span>(items)-<span class="number">1</span>:</span><br><span class="line">            c1 = self.coords(items[z])</span><br><span class="line">            c2 = self.coords(items[z+<span class="number">1</span>])</span><br><span class="line">            self.move(items[z], c2[<span class="number">0</span>]-c1[<span class="number">0</span>], c2[<span class="number">1</span>]-c1[<span class="number">1</span>])</span><br><span class="line">            z += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.move(head, self.moveX, self.moveY)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkCollisions</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;checks for collisions&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        dots = self.find_withtag(<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">        head = self.find_withtag(<span class="string">&quot;head&quot;</span>)</span><br><span class="line"></span><br><span class="line">        x1, y1, x2, y2 = self.bbox(head)</span><br><span class="line">        overlap = self.find_overlapping(x1, y1, x2, y2)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> dot <span class="keyword">in</span> dots:</span><br><span class="line">            <span class="keyword">for</span> over <span class="keyword">in</span> overlap:</span><br><span class="line">                <span class="keyword">if</span> over == dot:</span><br><span class="line">                  self.inGame = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> x1 &lt; <span class="number">0</span>:</span><br><span class="line">            self.inGame = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> x1 &gt; Cons.BOARD_WIDTH - Cons.DOT_SIZE:</span><br><span class="line">            self.inGame = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> y1 &lt; <span class="number">0</span>:</span><br><span class="line">            self.inGame = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> y1 &gt; Cons.BOARD_HEIGHT - Cons.DOT_SIZE:</span><br><span class="line">            self.inGame = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">locateApple</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;places the apple object on Canvas&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        apple = self.find_withtag(<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">        self.delete(apple[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        r = random.randint(<span class="number">0</span>, Cons.MAX_RAND_POS)</span><br><span class="line">        self.appleX = r * Cons.DOT_SIZE</span><br><span class="line">        r = random.randint(<span class="number">0</span>, Cons.MAX_RAND_POS)</span><br><span class="line">        self.appleY = r * Cons.DOT_SIZE</span><br><span class="line"></span><br><span class="line">        self.create_image(self.appleX, self.appleY, anchor=NW,</span><br><span class="line">            image=self.apple, tag=<span class="string">&quot;apple&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onKeyPressed</span>(<span class="params">self, e</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;controls direction variables with cursor keys&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        key = e.keysym</span><br><span class="line"></span><br><span class="line">        LEFT_CURSOR_KEY = <span class="string">&quot;Left&quot;</span></span><br><span class="line">        <span class="keyword">if</span> key == LEFT_CURSOR_KEY <span class="keyword">and</span> self.moveX &lt;= <span class="number">0</span>:</span><br><span class="line">            self.moveX = -Cons.DOT_SIZE</span><br><span class="line">            self.moveY = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        RIGHT_CURSOR_KEY = <span class="string">&quot;Right&quot;</span></span><br><span class="line">        <span class="keyword">if</span> key == RIGHT_CURSOR_KEY <span class="keyword">and</span> self.moveX &gt;= <span class="number">0</span>:</span><br><span class="line">            self.moveX = Cons.DOT_SIZE</span><br><span class="line">            self.moveY = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        RIGHT_CURSOR_KEY = <span class="string">&quot;Up&quot;</span></span><br><span class="line">        <span class="keyword">if</span> key == RIGHT_CURSOR_KEY <span class="keyword">and</span> self.moveY &lt;= <span class="number">0</span>:</span><br><span class="line">            self.moveX = <span class="number">0</span></span><br><span class="line">            self.moveY = -Cons.DOT_SIZE</span><br><span class="line"></span><br><span class="line">        DOWN_CURSOR_KEY = <span class="string">&quot;Down&quot;</span></span><br><span class="line">        <span class="keyword">if</span> key == DOWN_CURSOR_KEY <span class="keyword">and</span> self.moveY &gt;= <span class="number">0</span>:</span><br><span class="line">            self.moveX = <span class="number">0</span></span><br><span class="line">            self.moveY = Cons.DOT_SIZE</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onTimer</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;creates a game cycle each timer event&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        self.drawScore()</span><br><span class="line">        self.checkCollisions()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.inGame:</span><br><span class="line">            self.checkAppleCollision()</span><br><span class="line">            self.moveSnake()</span><br><span class="line">            self.after(Cons.DELAY, self.onTimer)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.gameOver()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">drawScore</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;draws score&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        score = self.find_withtag(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">        self.itemconfigure(score, text=<span class="string">&quot;Score: &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">gameOver</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;deletes all objects and draws game over message&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">        self.delete(ALL)</span><br><span class="line">        self.create_text(self.winfo_width() /<span class="number">2</span>, self.winfo_height()/<span class="number">2</span>,</span><br><span class="line">            text=<span class="string">&quot;Game Over with score &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score), fill=<span class="string">&quot;white&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Snake</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.master.title(<span class="string">&#x27;Snake&#x27;</span>)</span><br><span class="line">        self.board = Board()</span><br><span class="line">        self.pack()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    nib = Snake()</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>首先我们定义一些用于游戏的常量。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cons</span>:</span><br><span class="line">    BOARD_WIDTH = <span class="number">300</span></span><br><span class="line">    BOARD_HEIGHT = <span class="number">300</span></span><br><span class="line">    DELAY = <span class="number">100</span></span><br><span class="line">    DOT_SIZE = <span class="number">10</span></span><br><span class="line">    MAX_RAND_POS = <span class="number">27</span></span><br></pre></td></tr></table></figure>
+<p><code>BOARD_WIDTH</code> 和 <code>BOARD_HEIGHT</code> 常量决定了板子的大小。<code>DELAY</code> 常量决定了游戏速度。<code>DOT_SIZE</code> 常量是苹果和蛇体节的大小。<code>MAX_RAND_POS</code> 常量用于计算苹果的随机位置。</p>
+<p><code>initGame()</code> 方法初始化变量、载入图像、开始倒计时函数。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.createObjects()</span><br><span class="line">self.locateApple()</span><br></pre></td></tr></table></figure>
+<p><code>createObjects()</code> 方法在画布上创建项。<code>locateApple()</code> 在画布上随机放置一个苹果。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.bind_all(<span class="string">&quot;&lt;Key&gt;&quot;</span>, self.onKeyPressed)</span><br></pre></td></tr></table></figure>
+<p>我们将键盘事件绑定到 <code>onKeyPressed()</code> 方法上。此游戏使用键盘光标键控制。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    self.idot = Image.<span class="built_in">open</span>(<span class="string">&quot;dot.png&quot;</span>)</span><br><span class="line">    self.dot = ImageTk.PhotoImage(self.idot)</span><br><span class="line">    self.ihead = Image.<span class="built_in">open</span>(<span class="string">&quot;head.png&quot;</span>)</span><br><span class="line">    self.head = ImageTk.PhotoImage(self.ihead)</span><br><span class="line">    self.iapple = Image.<span class="built_in">open</span>(<span class="string">&quot;apple.png&quot;</span>)</span><br><span class="line">    self.apple = ImageTk.PhotoImage(self.iapple)</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> IOError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(e)</span><br><span class="line">    sys.exit(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>在这几行中，我们载入图像。在贪吃蛇游戏中有三个图像：头、体节和苹果。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">createObjects</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;creates objects on Canvas&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    self.create_text(<span class="number">30</span>, <span class="number">10</span>, text=<span class="string">&quot;Score: &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score),</span><br><span class="line">                        tag=<span class="string">&quot;score&quot;</span>, fill=<span class="string">&quot;white&quot;</span>)</span><br><span class="line">    self.create_image(self.appleX, self.appleY, image=self.apple,</span><br><span class="line">        anchor=NW, tag=<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">    self.create_image(<span class="number">50</span>, <span class="number">50</span>, image=self.head, anchor=NW,  tag=<span class="string">&quot;head&quot;</span>)</span><br><span class="line">    self.create_image(<span class="number">30</span>, <span class="number">50</span>, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">    self.create_image(<span class="number">40</span>, <span class="number">50</span>, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>在 <code>createObjects()</code> 方法中，我们在画布上创建游戏对象。这些是画布项。它们有初始的 x 与 y 坐标。<code>image</code> 参数提供用于显示的图像。<code>anchor</code> 参数设置为 NW，这样画布项的坐标就在每个项目的左上点。如果我们希望能在根窗口边框附近显示图像，这一点就很重要。尝试删除锚点，看看会发生什么。<code>tag</code> 参数用于标识画布上的项。一个标签可用于多个画布项。</p>
+<p><code>checkAppleCollision()</code> 方法检测蛇是否碰到了苹果对象。若如此，我们增加得分、增长蛇体节并调用 <code>locateApp()</code> 方法。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">apple = self.find_withtag(<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">head = self.find_withtag(<span class="string">&quot;head&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>find_withtag()</code> 方法通过标签查找画布上的项。我们需要两个项：蛇头和苹果。注意，即使基于给定标签只有找到一个项，该方法也会返回一个元组。这是用于苹果项的示例。之后可通过以下方式访问苹果项：<code>apple[0]</code>。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">x1, y1, x2, y2 = self.bbox(head)</span><br><span class="line">overlap = self.find_overlapping(x1, y1, x2, y2)</span><br></pre></td></tr></table></figure>
+<p><code>bbox()</code> 方法返回项的边界框顶点。<code>find_overlapping()</code> 方法查找给定坐标的碰撞项。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ovr <span class="keyword">in</span> overlap:</span><br><span class="line">    <span class="keyword">if</span> apple[<span class="number">0</span>] == ovr:</span><br><span class="line">        x, y = self.coords(apple)</span><br><span class="line">        self.create_image(x, y, image=self.dot, anchor=NW, tag=<span class="string">&quot;dot&quot;</span>)</span><br><span class="line">        self.locateApple()</span><br></pre></td></tr></table></figure>
+<p>如果苹果碰撞到了头，我们就在苹果的坐标上创建一个新的体节项。我们调用 <code>locateApple()</code> 方法，它从画布上删除老的苹果项，并在创建且随机定位一个新的。</p>
+<p>在 <code>moveSnake()</code> 方法中，我们有游戏的关键算法。为了理解它，且看蛇是如何移动的。我们控制蛇的头部。我们可以用光标键改变它的方向。其它体节呈链条式移动。第二节移动到第一节的位置，第三节移动到第二节位置，如此循环。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">z = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> z &lt; <span class="built_in">len</span>(items)-<span class="number">1</span>:</span><br><span class="line">    c1 = self.coords(items[z])</span><br><span class="line">    c2 = self.coords(items[z+<span class="number">1</span>])</span><br><span class="line">    self.move(items[z], c2[<span class="number">0</span>]-c1[<span class="number">0</span>], c2[<span class="number">1</span>]-c1[<span class="number">1</span>])</span><br><span class="line">    z += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>此代码将关键沿链条移动。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.move(head, self.moveX, self.moveY)</span><br></pre></td></tr></table></figure>
+<p>我们用 <code>move()</code> 方法移动头部。 <code>self.moveX</code> 和 <code>self.moveY</code> 变量在光标键按下时被设置。</p>
+<p>在 <code>checkCollisions()</code> 方法中，我们确定蛇是否碰撞到了身体或墙。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">x1, y1, x2, y2 = self.bbox(head)</span><br><span class="line">overlap = self.find_overlapping(x1, y1, x2, y2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> dot <span class="keyword">in</span> dots:</span><br><span class="line">    <span class="keyword">for</span> over <span class="keyword">in</span> overlap:</span><br><span class="line">        <span class="keyword">if</span> over == dot:</span><br><span class="line">          self.inGame = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>如果蛇头碰到了一个体节，那么游戏结束。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> y1 &gt; Cons.BOARD_HEIGHT - Cons.DOT_SIZE:</span><br><span class="line">    self.inGame = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>如果蛇头碰到了板子的底边，那么游戏结束。</p>
+<p><code>locateApple()</code> 方法在板子上随机定位一个新苹果并删除旧苹果。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">apple = self.find_withtag(<span class="string">&quot;apple&quot;</span>)</span><br><span class="line">self.delete(apple[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>此处我们找到并删除被蛇吃掉的苹果。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">r = random.randint(<span class="number">0</span>, Cons.MAX_RAND_POS)</span><br></pre></td></tr></table></figure>
+<p>我们获得一个 0 至 <code>MAX_RAND_POS</code> - 1 之间的随机数。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.appleX = r * Cons.DOT_SIZE</span><br><span class="line">...</span><br><span class="line">self.appleY = r * Cons.DOT_SIZE</span><br></pre></td></tr></table></figure>
+<p>这几行设置了苹果对象的 x 与 y 坐标。</p>
+<p>在 <code>onKeyPressed()</code> 方法中，我们在游戏过程中对按下的键作出反应。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">LEFT_CURSOR_KEY = <span class="string">&quot;Left&quot;</span></span><br><span class="line"><span class="keyword">if</span> key == LEFT_CURSOR_KEY <span class="keyword">and</span> self.moveX &lt;= <span class="number">0</span>:</span><br><span class="line">    self.moveX = -Cons.DOT_SIZE</span><br><span class="line">    self.moveY = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>如果我们按下左光标键，我们就据此设置 <code>self.moveX</code> 和 <code>self.moveY</code> 变量。这些变量在 <code>moveSnake()</code> 方法中用于改变蛇对象的坐标。还要注意，当蛇向右移动时，我们不能立即转向左边。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">onTimer</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;creates a game cycle each timer event &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    self.drawScore()</span><br><span class="line">    self.checkCollisions()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> self.inGame:</span><br><span class="line">        self.checkAppleCollision()</span><br><span class="line">        self.moveSnake()</span><br><span class="line">        self.after(Cons.DELAY, self.onTimer)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.gameOver()</span><br></pre></td></tr></table></figure>
+<p>每经过 <code>DELAY</code> 毫秒，<code>onTimer()</code> 方法被调用。若我们在游戏中，我们调用三个方法来构建游戏逻辑。否则游戏将结束。计时器在 <code>after()</code> 方法基础上，每 <code>DELAY</code> 毫秒后只调用一次。为了我得调用计时器，我们递归调用 <code>onTimer()</code> 方法。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">drawScore</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;draws score&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    score = self.find_withtag(<span class="string">&quot;score&quot;</span>)</span><br><span class="line">    self.itemconfigure(score, text=<span class="string">&quot;Score: &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score))</span><br><span class="line">The drawScore method draws score on the board.</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gameOver</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;deletes all objects and draws game over message&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    self.delete(ALL)</span><br><span class="line">    self.create_text(self.winfo_width() /<span class="number">2</span>, self.winfo_height()/<span class="number">2</span>,</span><br><span class="line">        text=<span class="string">&quot;Game Over with score &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(self.score), fill=<span class="string">&quot;white&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>若游戏结束，我们就删除画布上的所有项。然后我们在屏幕中央绘制游戏结束和最终得分。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/snake.png?ezimgfmt=rs:302x326/rscb1/ng:webp/ngcb1" alt="Snake" loading="lazy"><br>Figure: Snake</p>
+<p>这是用 Tkinter 创建的贪吃蛇电脑游戏。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL3NuYWtlLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/drawing">上一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>SNAKE</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

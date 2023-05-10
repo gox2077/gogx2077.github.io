@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章 PyQt6 小部件 I 原文改于 2023-01-10英译中于 2023-04-26  小部件是应用程序的基础模块。PyQt6 拥有许多各种各样的小部件，包括按钮、复选框、滑块或列表框。在教程的这一部分，我们描述了几种实用的小部件：QCheckBox、切换模式的 QPushButton、QSlider、QProgressBar 和 QCalendarWidget。 Py">
+<meta property="og:type" content="website">
+<meta property="og:title" content="档案库">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-pyqt6/widgets.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章 PyQt6 小部件 I 原文改于 2023-01-10英译中于 2023-04-26  小部件是应用程序的基础模块。PyQt6 拥有许多各种各样的小部件，包括按钮、复选框、滑块或列表框。在教程的这一部分，我们描述了几种实用的小部件：QCheckBox、切换模式的 QPushButton、QSlider、QProgressBar 和 QCalendarWidget。 Py">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/qcheckbox.png?ezimgfmt=rs:252x176/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/togglebutton.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/qslider.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/pyqt6/qprogressbar.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-09T15:52:12.915Z">
+<meta property="article:modified_time" content="2023-05-09T15:52:12.915Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/pyqt6/qcheckbox.png?ezimgfmt=rs:252x176/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-pyqt6/widgets">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-pyqt6/widgets.html","path":"translation/zt-pyqt6/widgets.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyQt6-%E5%B0%8F%E9%83%A8%E4%BB%B6-I"><span class="nav-number">1.</span> <span class="nav-text">PyQt6 小部件 I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QCheckBox-%E5%A4%8D%E9%80%89%E6%A1%86"><span class="nav-number">1.1.</span> <span class="nav-text">PyQt6 QCheckBox 复选框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%8C%89%E9%92%AE"><span class="nav-number">1.2.</span> <span class="nav-text">切换按钮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QSlider-%E6%BB%91%E5%9D%97"><span class="nav-number">1.3.</span> <span class="nav-text">PyQt6 QSlider 滑块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QProgressBar-%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="nav-number">1.4.</span> <span class="nav-text">PyQt6 QProgressBar 进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6-QCalendarWidget-%E6%97%A5%E5%8E%86%E5%B0%8F%E9%83%A8%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">PyQt6 QCalendarWidget 日历小部件</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>WIDGETS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni93aWRnZXRzLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/dialogs">上一章</a> <a href="/translation/zt-pyqt6/widgets2">下一章</a></p>
+<h1 id="PyQt6-小部件-I"><a href="#PyQt6-小部件-I" class="headerlink" title="PyQt6 小部件 I"></a>PyQt6 小部件 I</h1><blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-04-26</em></p>
+</blockquote>
+<p>小部件是应用程序的基础模块。PyQt6 拥有许多各种各样的小部件，包括按钮、复选框、滑块或列表框。在教程的这一部分，我们描述了几种实用的小部件：<code>QCheckBox</code>、切换模式的 <code>QPushButton</code>、<code>QSlider</code>、<code>QProgressBar</code> 和 <code>QCalendarWidget</code>。</p>
+<h2 id="PyQt6-QCheckBox-复选框"><a href="#PyQt6-QCheckBox-复选框" class="headerlink" title="PyQt6 QCheckBox 复选框"></a>PyQt6 QCheckBox 复选框</h2><p><code>QCheckBox</code> 是一种小部件，拥有两种状态：开和关。它是一个带有方框的标签。复选框通常用于表示应用程序中可以启用或禁用的特性。</p>
+<figure class="highlight py"><figcaption><span>check_box.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, a QCheckBox widget</span></span><br><span class="line"><span class="string">is used to toggle the title of a window.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QCheckBox, QApplication</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        cb = QCheckBox(<span class="string">&#x27;Show title&#x27;</span>, self)</span><br><span class="line">        cb.move(<span class="number">20</span>, <span class="number">20</span>)</span><br><span class="line">        cb.toggle()</span><br><span class="line">        cb.stateChanged.connect(self.changeTitle)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;QCheckBox&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">changeTitle</span>(<span class="params">self, state</span>):</span><br><span class="line">        <span class="keyword">if</span> state == Qt.CheckState.Checked.value:</span><br><span class="line">            self.setWindowTitle(<span class="string">&#x27;QCheckBox&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.setWindowTitle(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>我们创建了一个复选框，用于切换窗口标题。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">cb = QCheckBox(<span class="string">&#x27;Show title&#x27;</span>, self)</span><br></pre></td></tr></table></figure>
+
+<p>这是 <code>QCheckBox</code> 的构造函数。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">cb.toggle()</span><br></pre></td></tr></table></figure>
+
+<p>我们已经设置了窗口标题，同样也勾选了复选框。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">cb.stateChanged.connect(self.changeTitle)</span><br></pre></td></tr></table></figure>
+
+<p>我们将用户定义的 <code>changeTitle()</code> 方法连接到 <code>stateChanged</code> 信号上。<code>changeTitle()</code> 方法的作用是切换窗口标题。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> state == Qt.CheckState.Checked.value:</span><br><span class="line">    self.setWindowTitle(<span class="string">&#x27;QCheckBox&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    self.setWindowTitle(<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>小部件状态在 <code>changeTitle()</code> 方法中赋予到 <code>state</code> 变量上。如果小部件被选中，我们将设置窗口的标题。否则，设置窗口标题为空内容。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/qcheckbox.png?ezimgfmt=rs:252x176/rscb1/ng:webp/ngcb1" alt="QCheckBox" loading="lazy"><br>Figure: QCheckBox</p>
+<h2 id="切换按钮"><a href="#切换按钮" class="headerlink" title="切换按钮"></a>切换按钮</h2><p>切换按钮是特殊模式的 <code>QPushButton</code>。它是拥有两种状态的按钮：按下和未按下。我们通过点击它来切换这两种状态。</p>
+<figure class="highlight py"><figcaption><span>toggle_button.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this example, we create three toggle buttons.</span></span><br><span class="line"><span class="string">They control the background color of a QFrame.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QPushButton,</span><br><span class="line">        QFrame, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QColor</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.col = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        redb = QPushButton(<span class="string">&#x27;Red&#x27;</span>, self)</span><br><span class="line">        redb.setCheckable(<span class="literal">True</span>)</span><br><span class="line">        redb.move(<span class="number">10</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">        redb.clicked[<span class="built_in">bool</span>].connect(self.setColor)</span><br><span class="line"></span><br><span class="line">        greenb = QPushButton(<span class="string">&#x27;Green&#x27;</span>, self)</span><br><span class="line">        greenb.setCheckable(<span class="literal">True</span>)</span><br><span class="line">        greenb.move(<span class="number">10</span>, <span class="number">60</span>)</span><br><span class="line"></span><br><span class="line">        greenb.clicked[<span class="built_in">bool</span>].connect(self.setColor)</span><br><span class="line"></span><br><span class="line">        blueb = QPushButton(<span class="string">&#x27;Blue&#x27;</span>, self)</span><br><span class="line">        blueb.setCheckable(<span class="literal">True</span>)</span><br><span class="line">        blueb.move(<span class="number">10</span>, <span class="number">110</span>)</span><br><span class="line"></span><br><span class="line">        blueb.clicked[<span class="built_in">bool</span>].connect(self.setColor)</span><br><span class="line"></span><br><span class="line">        self.square = QFrame(self)</span><br><span class="line">        self.square.setGeometry(<span class="number">150</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">        self.square.setStyleSheet(<span class="string">&quot;QWidget &#123; background-color: %s &#125;&quot;</span> %</span><br><span class="line">                                  self.col.name())</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">300</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Toggle button&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setColor</span>(<span class="params">self, pressed</span>):</span><br><span class="line">        source = self.sender()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> pressed:</span><br><span class="line">            val = <span class="number">255</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            val = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> source.text() == <span class="string">&quot;Red&quot;</span>:</span><br><span class="line">            self.col.setRed(val)</span><br><span class="line">        <span class="keyword">elif</span> source.text() == <span class="string">&quot;Green&quot;</span>:</span><br><span class="line">            self.col.setGreen(val)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.col.setBlue(val)</span><br><span class="line"></span><br><span class="line">        self.square.setStyleSheet(<span class="string">&quot;QFrame &#123; background-color: %s &#125;&quot;</span> %</span><br><span class="line">                                  self.col.name())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在本例中，我们创建了三个切换按钮和一个 <code>QFrame</code>。我们设置它的背景色为黑色。切换按钮用于切换色值的红、绿、蓝部分。背景色取决于按下了哪些按钮。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.col = QColor(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这是初始的色值：黑色。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">redb = QPushButton(<span class="string">&#x27;Red&#x27;</span>, self)</span><br><span class="line">redb.setCheckable(<span class="literal">True</span>)</span><br><span class="line">redb.move(<span class="number">10</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要创建切换按钮，我们先创建 <code>QPushButton</code> 并通过 <code>setCheckable()</code> 方法使它可以被切换。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">redb.clicked[<span class="built_in">bool</span>].connect(self.setColor)</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>clicked</code> 信号连接到用户定义方法上。我们使用的 <code>clicked</code> 信号泛型为布尔值</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">source = self.sender()</span><br></pre></td></tr></table></figure>
+
+<p>获取被切换的按钮。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> source.text() == <span class="string">&quot;Red&quot;</span>:</span><br><span class="line">    self.col.setRed(val)</span><br></pre></td></tr></table></figure>
+
+<p>若它是红色按钮，则据此更新颜色的红色部分。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.square.setStyleSheet(<span class="string">&quot;QFrame &#123; background-color: %s &#125;&quot;</span> %</span><br><span class="line">    self.col.name())</span><br></pre></td></tr></table></figure>
+
+<p>使用样式表来更改背景色。使用 <code>setStyleSheet()</code> 方法更新样式表。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/togglebutton.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1" alt="Toggle button" loading="lazy"><br>Figure: Toggle button</p>
+<h2 id="PyQt6-QSlider-滑块"><a href="#PyQt6-QSlider-滑块" class="headerlink" title="PyQt6 QSlider 滑块"></a>PyQt6 QSlider 滑块</h2><p><code>QSlider</code> 是具有简单游标的小部件。这个游标可以前后推动。这样就可以为特定任务选择一个值。有时使用滑块比直接输入数字或旋转框更加自然。</p>
+<p>在本例中，我们显示一个滑块和一个标签。标签显示一幅图像。滑块控制标签。</p>
+<figure class="highlight py"><figcaption><span>slider.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example shows a QSlider widget.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QSlider, QLabel, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> Qt</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QPixmap</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        sld = QSlider(Qt.Orientation.Horizontal, self)</span><br><span class="line">        sld.setFocusPolicy(Qt.FocusPolicy.NoFocus)</span><br><span class="line">        sld.setGeometry(<span class="number">30</span>, <span class="number">40</span>, <span class="number">200</span>, <span class="number">30</span>)</span><br><span class="line">        sld.valueChanged[<span class="built_in">int</span>].connect(self.changeValue)</span><br><span class="line"></span><br><span class="line">        self.label = QLabel(self)</span><br><span class="line">        self.label.setPixmap(QPixmap(<span class="string">&#x27;mute.png&#x27;</span>))</span><br><span class="line">        self.label.setGeometry(<span class="number">250</span>, <span class="number">40</span>, <span class="number">80</span>, <span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;QSlider&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">changeValue</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="keyword">if</span> value == <span class="number">0</span>:</span><br><span class="line">            self.label.setPixmap(QPixmap(<span class="string">&#x27;mute.png&#x27;</span>))</span><br><span class="line">        <span class="keyword">elif</span> <span class="number">0</span> &lt; value &lt;= <span class="number">30</span>:</span><br><span class="line">            self.label.setPixmap(QPixmap(<span class="string">&#x27;min.png&#x27;</span>))</span><br><span class="line">        <span class="keyword">elif</span> <span class="number">30</span> &lt; value &lt; <span class="number">80</span>:</span><br><span class="line">            self.label.setPixmap(QPixmap(<span class="string">&#x27;med.png&#x27;</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.label.setPixmap(QPixmap(<span class="string">&#x27;max.png&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例模拟了音量控制。通过拖动滑块上的游标，我们可以改变标签上的图片。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">sld = QSlider(Qt.Orientation.Horizontal, self)</span><br></pre></td></tr></table></figure>
+
+<p>此处创建一个水平的 <code>QSlider</code>。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.label = QLabel(self)</span><br><span class="line">self.label.setPixmap(QPixmap(<span class="string">&#x27;mute.png&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>创建 <code>QLabel</code> 小部件，并设置初始图像为静音图片。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">sld.valueChanged[<span class="built_in">int</span>].connect(self.changeValue)</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>valueChanged</code> 信号连接到用户定义的 <code>changeValue()</code> 方法上。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> value == <span class="number">0</span>:</span><br><span class="line">    self.label.setPixmap(QPixmap(<span class="string">&#x27;mute.png&#x27;</span>))</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>基于滑块的值，我们设置标签上的图片。在上面的代码中，我们在滑块值为零时，设置使用 <code>mute.png</code> 图像。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/qslider.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1" alt="QSlider widget" loading="lazy"><br>Figure: QSlider widget</p>
+<h2 id="PyQt6-QProgressBar-进度条"><a href="#PyQt6-QProgressBar-进度条" class="headerlink" title="PyQt6 QProgressBar 进度条"></a>PyQt6 QProgressBar 进度条</h2><p>进度条是处理冗长任务时所使用的小部件。它自带动画，以便用户知道任务进度。PyQt6 工具包中的 <code>QProgressBar</code> 小部件提供水平和垂直的进度条。程序员可以设置进度条的最大值和最小值。默认值是 0 和 99。</p>
+<figure class="highlight py"><figcaption><span>progressbar.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example shows a QProgressBar widget.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QProgressBar, QPushButton, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> QBasicTimer</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.pbar = QProgressBar(self)</span><br><span class="line">        self.pbar.setGeometry(<span class="number">30</span>, <span class="number">40</span>, <span class="number">200</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">        self.btn = QPushButton(<span class="string">&#x27;Start&#x27;</span>, self)</span><br><span class="line">        self.btn.move(<span class="number">40</span>, <span class="number">80</span>)</span><br><span class="line">        self.btn.clicked.connect(self.doAction)</span><br><span class="line"></span><br><span class="line">        self.timer = QBasicTimer()</span><br><span class="line">        self.step = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">280</span>, <span class="number">170</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;QProgressBar&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">timerEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">        <span class="keyword">if</span> self.step &gt;= <span class="number">100</span>:</span><br><span class="line">            self.timer.stop()</span><br><span class="line">            self.btn.setText(<span class="string">&#x27;Finished&#x27;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.step = self.step + <span class="number">1</span></span><br><span class="line">        self.pbar.setValue(self.step)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">doAction</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">if</span> self.timer.isActive():</span><br><span class="line">            self.timer.stop()</span><br><span class="line">            self.btn.setText(<span class="string">&#x27;Start&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.timer.start(<span class="number">100</span>, self)</span><br><span class="line">            self.btn.setText(<span class="string">&#x27;Stop&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>在本例中，我们有一个水平进度条和一个按钮。按钮用于开始和暂停进度长。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.pbar = QProgressBar(self)</span><br></pre></td></tr></table></figure>
+
+<p>这是 <code>QProgressBar</code> 构造函数。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.timer = QBasicTimer()</span><br></pre></td></tr></table></figure>
+
+<p>要激活进度条，还需要使用计时器对象。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.timer.start(<span class="number">100</span>, self)</span><br></pre></td></tr></table></figure>
+
+<p>要启动计时器事件，我们调用它的 <code>start()</code> 方法。此方法有两个参数：超时时长和接收事件的对象。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">timerEvent</span>(<span class="params">self, e</span>):</span><br><span class="line">    <span class="keyword">if</span> self.step &gt;= <span class="number">100</span>:</span><br><span class="line">        self.timer.stop()</span><br><span class="line">        self.btn.setText(<span class="string">&#x27;Finished&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    self.step = self.step + <span class="number">1</span></span><br><span class="line">    self.pbar.setValue(self.step)</span><br></pre></td></tr></table></figure>
+
+<p>每个 <code>QObject</code> 和它的子孙都有 <code>timerEvent</code> 事件处理器。为了对计时器事件作出反应，我们要重新实现事件处理器。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">doAction</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">if</span> self.timer.isActive():</span><br><span class="line">        self.timer.stop()</span><br><span class="line">        self.btn.setText(<span class="string">&#x27;Start&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        self.timer.start(<span class="number">100</span>, self)</span><br><span class="line">        self.btn.setText(<span class="string">&#x27;Stop&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>doAction()</code> 方法中，我们开始和停止计时器。</p>
+<p><img src="https://zetcode.com/img/gui/pyqt6/qprogressbar.png?ezimgfmt=rs:282x196/rscb1/ng:webp/ngcb1" alt="QProgressBar" loading="lazy"><br>Figure: QProgressBar</p>
+<h2 id="PyQt6-QCalendarWidget-日历小部件"><a href="#PyQt6-QCalendarWidget-日历小部件" class="headerlink" title="PyQt6 QCalendarWidget 日历小部件"></a>PyQt6 QCalendarWidget 日历小部件</h2><p><code>QCalendarWidget</code> 提供基于月份的日历小部件。它允许用户用一种简单直观的方法选择日期。</p>
+<figure class="highlight py"><figcaption><span>calendar.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example shows a QCalendarWidget widget.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QCalendarWidget, QLabel, QApplication, QVBoxLayout)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtCore <span class="keyword">import</span> QDate</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        vbox = QVBoxLayout(self)</span><br><span class="line"></span><br><span class="line">        cal = QCalendarWidget(self)</span><br><span class="line">        cal.setGridVisible(<span class="literal">True</span>)</span><br><span class="line">        cal.clicked[QDate].connect(self.showDate)</span><br><span class="line"></span><br><span class="line">        vbox.addWidget(cal)</span><br><span class="line"></span><br><span class="line">        self.lbl = QLabel(self)</span><br><span class="line">        date = cal.selectedDate()</span><br><span class="line">        self.lbl.setText(date.toString())</span><br><span class="line"></span><br><span class="line">        vbox.addWidget(self.lbl)</span><br><span class="line"></span><br><span class="line">        self.setLayout(vbox)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">300</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Calendar&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">showDate</span>(<span class="params">self, date</span>):</span><br><span class="line">        self.lbl.setText(date.toString())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>本例有一个日历小部件和一个标签小部件。当前选中日期将显示在标签小部件上。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">cal = QCalendarWidget(self)</span><br></pre></td></tr></table></figure>
+
+<p>创建 <code>QCalendarWidget</code> 实例。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">cal.clicked[QDate].connect(self.showDate)</span><br></pre></td></tr></table></figure>
+
+<p>若从小部件中选中了日期，<code>clicked[QDate]</code> 信号将被发出。我们将这个信号连接到用户定义的 <code>showDate()</code> 方法上。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">showDate</span>(<span class="params">self, date</span>):</span><br><span class="line">    self.lbl.setText(date.toString())</span><br></pre></td></tr></table></figure>
+
+<p>我们通过调用 <code>seletedDate()</code> 方法来检索选定的日期。然后将日期对象转换为字符串，并设置到标签小部件上。</p>
+<p>在 PyQt6 教程的这一部分，我们介绍了以下小部件：<code>QCheckBox</code>、切换模式的 <code>QPushButton</code>、<code>QSlider</code>、<code>QProgress</code> 和 <code>QCalendarWidget</code>。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS9weXF0Ni93aWRnZXRzLw==">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-pyqt6">目录</a> <a href="/translation/zt-pyqt6/dialogs">上一章</a> <a href="/translation/zt-pyqt6/widgets2">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-pyqt6/">PYQT6</a></li>
+            <li>WIDGETS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gox2077.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.15.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/config.min.js"></script>
+
+    <meta name="description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们使用对话框。 对话被定义为两个以上人之间的谈话。在计算机程序中，对话框是用于与应用程序「交谈」的窗口。对话框用于输入数据、修改数据、更改应用程序设置等。对话框是在用户和计算机程序之间交流的重要手段。 Tkinter 消息框消息框是一种方便的对话框，它将来自应用程序的">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tkinter 对话框">
+<meta property="og:url" content="https://gox2077.github.io/translation/zt-tkinter/dialogs.html">
+<meta property="og:site_name" content="档案库">
+<meta property="og:description" content="原文 目录 上一章 下一章  原文改于 2023-01-10英译中于 2023-05-10  在 Tkinter 教程的这一部分，我们使用对话框。 对话被定义为两个以上人之间的谈话。在计算机程序中，对话框是用于与应用程序「交谈」的窗口。对话框用于输入数据、修改数据、更改应用程序设置等。对话框是在用户和计算机程序之间交流的重要手段。 Tkinter 消息框消息框是一种方便的对话框，它将来自应用程序的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/errordlg.png?ezimgfmt=rs:223x118/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/colorchooser.png?ezimgfmt=rs:418x221/rscb1/ng:webp/ngcb1">
+<meta property="og:image" content="https://zetcode.com/img/gui/tkinter/filedlg.png?ezimgfmt=rs:418x278/rscb1/ng:webp/ngcb1">
+<meta property="article:published_time" content="2023-05-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T12:45:54.687Z">
+<meta property="article:author" content="X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zetcode.com/img/gui/tkinter/errordlg.png?ezimgfmt=rs:223x118/rscb1/ng:webp/ngcb1">
+
+
+<link rel="canonical" href="https://gox2077.github.io/translation/zt-tkinter/dialogs">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://gox2077.github.io/translation/zt-tkinter/dialogs.html","path":"translation/zt-tkinter/dialogs.html","title":"Tkinter 对话框"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Tkinter 对话框 | 档案库
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="档案库" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">档案库</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="/images/next.svg" alt="档案库">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页</a></li><li class="menu-item menu-item-日志"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>日志</a></li><li class="menu-item menu-item-文章"><a href="/docs/" rel="section"><i class="fa fa-file-pen fa-fw"></i>文章</a></li><li class="menu-item menu-item-译作"><a href="/translation/" rel="section"><i class="fa fa-book fa-fw"></i>译作</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E6%B6%88%E6%81%AF%E6%A1%86"><span class="nav-number">1.</span> <span class="nav-text">Tkinter 消息框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">Tkinter 颜色选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter-%E6%96%87%E4%BB%B6%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">3.</span> <span class="nav-text">Tkinter 文件对话框</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">X</p>
+  <div class="site-description" itemprop="description">杂文记录</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></span>
+  </div>
+<div class="cc-license animated" itemprop="sponsor">
+  <!-- <span class="exturl cc-opacity" title="Deploy with Netlify → https://www.netlify.com" data-url="aHR0cHM6Ly93d3cubmV0bGlmeS5jb20="><img width="120" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></span> -->
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">Tkinter 对话框
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>DIALOGS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL2RpYWxvZ3Mv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/menustoolbars">上一章</a> <a href="/translation/zt-tkinter/drawing">下一章</a></p>
+<blockquote>
+<p><em>原文改于 2023-01-10</em><br><em>英译中于 2023-05-10</em></p>
+</blockquote>
+<p>在 Tkinter 教程的这一部分，我们使用对话框。</p>
+<p>对话被定义为两个以上人之间的谈话。在计算机程序中，对话框是用于与应用程序「交谈」的窗口。对话框用于输入数据、修改数据、更改应用程序设置等。对话框是在用户和计算机程序之间交流的重要手段。</p>
+<h2 id="Tkinter-消息框"><a href="#Tkinter-消息框" class="headerlink" title="Tkinter 消息框"></a>Tkinter 消息框</h2><p>消息框是一种方便的对话框，它将来自应用程序的消息提供给用户。消息由文本和图像数据组成。Tkinter 中的消息框位于 <code>tkMessageBox</code> 模块中。</p>
+<figure class="highlight py"><figcaption><span>messagebox.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this program, we show various</span></span><br><span class="line"><span class="string">message boxes.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, BOTH</span><br><span class="line"><span class="keyword">from</span> tkinter.ttk <span class="keyword">import</span> Frame, Button</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox <span class="keyword">as</span> mbox</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Message boxes&quot;</span>)</span><br><span class="line">        self.pack()</span><br><span class="line"></span><br><span class="line">        error = Button(self, text=<span class="string">&quot;Error&quot;</span>, command=self.onError)</span><br><span class="line">        error.grid(padx=<span class="number">5</span>, pady=<span class="number">5</span>)</span><br><span class="line">        warning = Button(self, text=<span class="string">&quot;Warning&quot;</span>, command=self.onWarn)</span><br><span class="line">        warning.grid(row=<span class="number">1</span>, column=<span class="number">0</span>)</span><br><span class="line">        question = Button(self, text=<span class="string">&quot;Question&quot;</span>, command=self.onQuest)</span><br><span class="line">        question.grid(row=<span class="number">0</span>, column=<span class="number">1</span>)</span><br><span class="line">        inform = Button(self, text=<span class="string">&quot;Information&quot;</span>, command=self.onInfo)</span><br><span class="line">        inform.grid(row=<span class="number">1</span>, column=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onError</span>(<span class="params">self</span>):</span><br><span class="line">        mbox.showerror(<span class="string">&quot;Error&quot;</span>, <span class="string">&quot;Could not open file&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onWarn</span>(<span class="params">self</span>):</span><br><span class="line">        mbox.showwarning(<span class="string">&quot;Warning&quot;</span>, <span class="string">&quot;Deprecated function call&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onQuest</span>(<span class="params">self</span>):</span><br><span class="line">        mbox.askquestion(<span class="string">&quot;Question&quot;</span>, <span class="string">&quot;Are you sure to quit?&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onInfo</span>(<span class="params">self</span>):</span><br><span class="line">        mbox.showinfo(<span class="string">&quot;Information&quot;</span>, <span class="string">&quot;Download completed&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;300x150+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>我们使用网格管理器来设置四个按钮的网格。每个按钮显示一个不同的消息框。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> messagebox <span class="keyword">as</span> mbox</span><br></pre></td></tr></table></figure>
+<p>我们导入 <code>messagebox</code>，它有用于显示对话框的方法。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">error = Button(self, text=<span class="string">&quot;Error&quot;</span>, command=self.onError)</span><br></pre></td></tr></table></figure>
+<p>我们创建错误按钮，它调用 <code>onError()</code> 方法。在方法内，我们显示错误消息对话框。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">onError</span>(<span class="params">self</span>):</span><br><span class="line">    mbox.showerror(<span class="string">&quot;Error&quot;</span>, <span class="string">&quot;Could not open file&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>一旦我们按下错误按钮，就显示错误对话框。我们用 <code>showerror()</code> 方法在屏幕上显示对话框。此方法的首个参数是消息框的标题，其次是确切消息。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/errordlg.png?ezimgfmt=rs:223x118/rscb1/ng:webp/ngcb1" alt="Error message dialog" loading="lazy"><br>Figure: Error message dialog</p>
+<h2 id="Tkinter-颜色选择器"><a href="#Tkinter-颜色选择器" class="headerlink" title="Tkinter 颜色选择器"></a>Tkinter 颜色选择器</h2><p>颜色选择器是用于选择颜色的对话框。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">color_chooser.py</span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this script, we use colorchooser</span></span><br><span class="line"><span class="string">dialog to change the background of a frame.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Tk, Frame, Button, BOTH, SUNKEN</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> colorchooser</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;Color chooser&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        self.btn = Button(self, text=<span class="string">&quot;Choose Color&quot;</span>,</span><br><span class="line">            command=self.onChoose)</span><br><span class="line">        self.btn.place(x=<span class="number">30</span>, y=<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">        self.frame = Frame(self, border=<span class="number">1</span>,</span><br><span class="line">            relief=SUNKEN, width=<span class="number">100</span>, height=<span class="number">100</span>)</span><br><span class="line">        self.frame.place(x=<span class="number">160</span>, y=<span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onChoose</span>(<span class="params">self</span>):</span><br><span class="line">        (rgb, hx) = colorchooser.askcolor()</span><br><span class="line">        self.frame.config(bg=hx)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;300x150+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>我们有一个按钮和一个框架。点击按钮将显示颜色选择对话框。我们将通过在对话框选中颜色来改变框架的背景色。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">(rgb, hx) = colorchooser.askcolor()</span><br><span class="line">self.frame.config(bg=hx)</span><br></pre></td></tr></table></figure>
+<p><code>askcolor()</code> 方法显示此对话框。若我们点击 OK，将返回一个元组。它是 RGB 和十六进制的色值。在第二行，我们用返回的色值改变框架的背景色。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/colorchooser.png?ezimgfmt=rs:418x221/rscb1/ng:webp/ngcb1" alt="Color chooser" loading="lazy"><br>Figure: Color chooser</p>
+<h2 id="Tkinter-文件对话框"><a href="#Tkinter-文件对话框" class="headerlink" title="Tkinter 文件对话框"></a>Tkinter 文件对话框</h2><p><code>tkFileDialog</code> 对话框允许用户从文件系统中选择文件。</p>
+<figure class="highlight py"><figcaption><span>file_dialog.py</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode Tkinter tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">In this program, we use the</span></span><br><span class="line"><span class="string">tkFileDialog to select a file from</span></span><br><span class="line"><span class="string">a filesystem.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: www.zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> Frame, Tk, BOTH, Text, Menu, END</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> filedialog</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">Frame</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line">        self.master.title(<span class="string">&quot;File dialog&quot;</span>)</span><br><span class="line">        self.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        menubar = Menu(self.master)</span><br><span class="line">        self.master.config(menu=menubar)</span><br><span class="line"></span><br><span class="line">        fileMenu = Menu(menubar)</span><br><span class="line">        fileMenu.add_command(label=<span class="string">&quot;Open&quot;</span>, command=self.onOpen)</span><br><span class="line">        menubar.add_cascade(label=<span class="string">&quot;File&quot;</span>, menu=fileMenu)</span><br><span class="line"></span><br><span class="line">        self.txt = Text(self)</span><br><span class="line">        self.txt.pack(fill=BOTH, expand=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">onOpen</span>(<span class="params">self</span>):</span><br><span class="line">        ftypes = [(<span class="string">&#x27;Python files&#x27;</span>, <span class="string">&#x27;*.py&#x27;</span>), (<span class="string">&#x27;All files&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)]</span><br><span class="line">        dlg = filedialog.Open(self, filetypes = ftypes)</span><br><span class="line">        fl = dlg.show()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fl != <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">            text = self.readFile(fl)</span><br><span class="line">            self.txt.insert(END, text)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">readFile</span>(<span class="params">self, filename</span>):</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            text = f.read()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    root = Tk()</span><br><span class="line">    ex = Example()</span><br><span class="line">    root.geometry(<span class="string">&quot;300x250+300+300&quot;</span>)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>在代码示例中，我们使用 <code>tkFileDialog</code> 对话框来选择一个文件，并在文本小部件中显示它的内容。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.txt = Text(self)</span><br></pre></td></tr></table></figure>
+<p>这是 <code>Text</code> 小部件，我们将在此显示选中文件的内容。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">ftypes = [(<span class="string">&#x27;Python files&#x27;</span>, <span class="string">&#x27;*.py&#x27;</span>), (<span class="string">&#x27;All files&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+<p>这是文件过滤器。第一个显示仅限 Python 文件，其它的显示所有文件。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">dlg = filedialog.Open(self, filetypes = ftypes)</span><br><span class="line">fl = dlg.show()</span><br></pre></td></tr></table></figure>
+<p>此对话框被创建，并显示在屏幕上。我们获得返回值，即选中文件的名称。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">text = self.readFile(fl)</span><br></pre></td></tr></table></figure>
+<p>我们读取文件的内容。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">self.txt.insert(END, text)</span><br></pre></td></tr></table></figure>
+<p>文本插入到 <code>Text</code> 小部件中。</p>
+<p><img src="https://zetcode.com/img/gui/tkinter/filedlg.png?ezimgfmt=rs:418x278/rscb1/ng:webp/ngcb1" alt="File dialog" loading="lazy"><br>Figure: File dialog</p>
+<p>在 Tkinter 教程的这一部分，我们使用了对话框窗口。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly96ZXRjb2RlLmNvbS90a2ludGVyL2RpYWxvZ3Mv">原文<i class="fa fa-external-link-alt"></i></span> <a href="/translation/zt-tkinter">目录</a> <a href="/translation/zt-tkinter/menustoolbars">上一章</a> <a href="/translation/zt-tkinter/drawing">下一章</a></p>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/translation/">译作</a></li>
+            <li><a href="/translation/zt-tkinter/">TKINTER</a></li>
+            <li>DIALOGS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">X</span>
+</div>
+  <div class="powered-by">由 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div><div class="footer-custom">
+<!-- Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span> -->
+</div>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dveDIwNzcvZ294MjA3Ny5naXRodWIuaW8=" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></span>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/search/local-search.min.js"></script>
+<script class="next-config" data-name="gitter" type="application/json">{"enable":true,"room":"hexo-next/community"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/chat/gitter.min.js"></script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.4.3/mermaid.min.js","integrity":"sha256-e0o3JYsdjqKajf9eOe22FhioYSz9WofRY4dLKo3F6do="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.15.1/third-party/math/mathjax.min.js"></script>
+
+
+
+</body>
+</html>
