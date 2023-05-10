@@ -16,7 +16,7 @@
 
 本站结构基于 NexT 主题官网仓库 clone ，添加内容后使用 Hexo 一键部署而来，本应先 fork 再写的，后续再补吧。
 
-因此关于网站结构、样式，以及部件英文文档和网页的相应版权应归 [NexT](https://theme-next.js.org/) 所有。
+因此关于网站结构、样式，以及部件英文文档和网页的相应版权应归 Hexo 及 [NexT](https://theme-next.js.org/) 所有。
 
 本站目前主要内容是两部 ZetCode 原著的 Python PyQt6 教程和 Python Tkinter 教程，都是关于 Python GUI 的。
 
